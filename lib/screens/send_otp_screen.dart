@@ -3,6 +3,7 @@ import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/strings.dart';
 
 import '../widgets/app_text_field.dart';
+import '../widgets/main_button.dart';
 
 class SendOtpScreen extends StatelessWidget {
   SendOtpScreen({super.key});
@@ -22,7 +23,11 @@ class SendOtpScreen extends StatelessWidget {
               hint: AppStrings.hintPhoneNumber,
               controller: _controller,
               label: AppStrings.enterYourNumber,
-            )
+            ),
+            MainButton(
+              onPressed: () {},
+              text: AppStrings.next,
+            ),
           ],
         ),
       ),

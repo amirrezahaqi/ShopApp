@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'component/themes.dart';
-import 'screens/send_otp_screen.dart';
+import 'screens/get_otp_screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Sky Line",
       theme: lightTheme(),
-      home: SafeArea(child: SendOtpScreen()),
+      home: SafeArea(child: GetOtpScreen()),
     );
   }
 }
