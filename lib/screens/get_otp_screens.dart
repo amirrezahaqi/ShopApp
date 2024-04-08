@@ -4,6 +4,7 @@ import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
 
+import '../component/text_style.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/main_button.dart';
 
@@ -22,10 +23,15 @@ class GetOtpScreen extends StatelessWidget {
           children: [
             Assets.png.mainLogo.image(),
             AppDimens.medium.height,
-            Text(AppStrings.otpCodeSendFor
-                .replaceAll(AppStrings.replace, "09123456789")),
+            Text(
+                AppStrings.otpCodeSendFor.replaceAll(
+                  AppStrings.replace,
+                  "09123456789",
+                ),
+                style: LightAppTextStyle.title),
             AppDimens.medium.height,
-            const Text(AppStrings.wrongNumberEditNumber),
+            const Text(AppStrings.wrongNumberEditNumber,
+                style: LightAppTextStyle.title),
             AppTextField(
               hint: AppStrings.hintPhoneNumber,
               controller: _controller,

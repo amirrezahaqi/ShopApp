@@ -3,6 +3,7 @@ import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
 
+import '../component/text_style.dart';
 import '../gen/assets.gen.dart';
 
 class Avatar extends StatelessWidget {
@@ -17,7 +18,10 @@ class Avatar extends StatelessWidget {
           child: Image.asset(Assets.png.avatar.path),
         ),
         AppDimens.medium.height,
-        const Text(AppStrings.chooseProfileImage)
+        const Text(
+          AppStrings.chooseProfileImage,
+          style: LightAppTextStyle.title,
+        )
       ],
     );
   }

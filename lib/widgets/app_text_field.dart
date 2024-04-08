@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopnew/component/extension.dart';
 
+import '../component/text_style.dart';
 import '../res/dimens.dart';
 
 class AppTextField extends StatelessWidget {
@@ -35,8 +36,11 @@ class AppTextField extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(prefix),
-                Text(label),
+                Text(
+                  prefix,
+                  style: LightAppTextStyle.title,
+                ),
+                Text(label, style: LightAppTextStyle.title),
               ],
             ),
           ),
@@ -45,6 +49,7 @@ class AppTextField extends StatelessWidget {
             height: size.height * .07,
             width: size.width * .75,
             child: TextField(
+              style: LightAppTextStyle.hint,
               textAlign: textAlign,
               controller: controller,
               keyboardType: inputType,

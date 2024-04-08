@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopnew/res/colors.dart';
 
 import '../component/button_style.dart';
+import '../component/text_style.dart';
 
 class MainButton extends StatelessWidget {
   void Function() onPressed;
@@ -18,9 +18,6 @@ class MainButton extends StatelessWidget {
         child: ElevatedButton(
             style: AppButtonStyle.mainButtonStyle,
             onPressed: onPressed,
-            child: Text(
-              text,
-              style: const TextStyle(color: AppColors.mainButtonText),
-            )));
+            child: Text(text, style: LightAppTextStyle.button)));
   }
 }
