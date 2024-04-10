@@ -27,7 +27,7 @@ class AppTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(AppDimens.large),
+      padding: const EdgeInsets.all(AppDimens.small),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [

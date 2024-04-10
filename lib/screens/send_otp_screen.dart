@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/strings.dart';
+import 'package:shopnew/routs/names.dart';
 
 import '../widgets/app_text_field.dart';
 import '../widgets/main_button.dart';
@@ -25,7 +26,8 @@ class SendOtpScreen extends StatelessWidget {
               label: AppStrings.enterYourNumber,
             ),
             MainButton(
-              onPressed: () {},
+              onPressed: () =>
+                  Navigator.pushNamed(context, ScreeNames.getOtpScreen),
               text: AppStrings.next,
             ),
           ],

@@ -10,6 +10,11 @@ class LightAppTextStyle {
       fontSize: 14,
       color: AppColors.title,
       fontWeight: FontWeight.bold);
+  static const TextStyle falsenumber = TextStyle(
+      fontFamily: FontFamily.peyda,
+      fontSize: 14,
+      color: AppColors.primaryColor,
+      fontWeight: FontWeight.bold);
   static const TextStyle button = TextStyle(
       fontFamily: FontFamily.peyda,
       fontSize: 14,

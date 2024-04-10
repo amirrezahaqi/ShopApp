@@ -5,6 +5,7 @@ import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
 
 import '../component/text_style.dart';
+import '../routs/names.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/main_button.dart';
 
@@ -31,7 +32,7 @@ class GetOtpScreen extends StatelessWidget {
                 style: LightAppTextStyle.title),
             AppDimens.medium.height,
             const Text(AppStrings.wrongNumberEditNumber,
-                style: LightAppTextStyle.title),
+                style: LightAppTextStyle.falsenumber),
             AppTextField(
               hint: AppStrings.hintPhoneNumber,
               controller: _controller,
@@ -39,7 +40,8 @@ class GetOtpScreen extends StatelessWidget {
               prefix: "20:20",
             ),
             MainButton(
-              onPressed: () {},
+              onPressed: () =>
+                  Navigator.pushNamed(context, ScreeNames.registerScreen),
               text: AppStrings.next,
             ),
           ],

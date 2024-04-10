@@ -3,10 +3,10 @@ import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
 
-import '../component/text_style.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/avatar.dart';
 import '../widgets/main_button.dart';
+import '../widgets/registration_appbar.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
@@ -17,21 +17,7 @@ class RegisterScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-            preferredSize: Size(size.width, size.height * 0.2),
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.arrow_back)),
-                  const Text(
-                    AppStrings.register,
-                    style: LightAppTextStyle.title,
-                  )
-                ],
-              ),
-            )),
+        appBar: RegistrationAppBar(size: size),
         body: SizedBox(
           width: double.infinity,
           child: SingleChildScrollView(
@@ -64,8 +50,9 @@ class RegisterScreen extends StatelessWidget {
                   hint: AppStrings.hintLocation,
                   controller: _controller,
                   label: AppStrings.location,
-                  icon: const Icon(Icons.location_on),
+                  icon: const Icon(Icons.add_location_alt_outlined),
                 ),
+                AppDimens.medium.height,
                 MainButton(
                   onPressed: () {},
                   text: AppStrings.next,

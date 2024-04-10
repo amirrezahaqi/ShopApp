@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shopnew/routs/names.dart';
+import 'package:shopnew/routs/routs.dart';
 
 import 'component/themes.dart';
-import 'screens/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Sky Line",
       theme: lightTheme(),
-      home: SafeArea(child: RegisterScreen()),
+      initialRoute: ScreeNames.root,
+      routes: routs,
     );
   }
 }
