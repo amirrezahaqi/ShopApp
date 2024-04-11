@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
+import 'package:shopnew/routs/names.dart';
 
 import '../widgets/app_text_field.dart';
 import '../widgets/avatar.dart';
@@ -54,7 +55,8 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 AppDimens.medium.height,
                 MainButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.pushNamed(context, ScreeNames.mainScreen),
                   text: AppStrings.next,
                 ),
                 AppDimens.medium.height,

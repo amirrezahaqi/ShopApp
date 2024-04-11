@@ -5,4 +5,5 @@ class ScreeNames {
   static const getOtpScreen = "/getOtpScreen";
   static const sendOtpScreen = "/sendOtpScreen";
   static const registerScreen = "/registerScreen";
+  static const mainScreen = "/mainScreen";
 }
