@@ -1,15 +1,1 @@
-<svg id="Group_31" data-name="Group 31" xmlns="http://www.w3.org/2000/svg" width="29.223" height="29.223" viewBox="0 0 29.223 29.223">
-  <g id="vuesax_linear_bag-2" data-name="vuesax/linear/bag-2">
-    <g id="Group_30" data-name="Group 30">
-      <g id="Group_29" data-name="Group 29">
-        <g id="bag-2">
-          <path id="Vector" d="M0,6.784V5.621A5.718,5.718,0,0,1,4.864.026a5.392,5.392,0,0,1,5.919,5.368V7.047" transform="translate(8.986 2.406)" fill="none" stroke="#cecece" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
-          <path id="Vector-2" data-name="Vector" d="M6.89,16.774h7.189c4.817,0,5.679-1.929,5.931-4.277l.9-7.189C21.232,2.384,20.393,0,15.277,0H5.692C.576,0-.263,2.384.061,5.308l.9,7.189C1.211,14.845,2.074,16.774,6.89,16.774Z" transform="translate(3.893 9.585)" fill="none" stroke="#cecece" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
-          <path id="Vector-3" data-name="Vector" d="M.495.5H.505" transform="translate(18.071 13.878)" fill="none" stroke="#cecece" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
-          <path id="Vector-4" data-name="Vector" d="M.495.5H.505" transform="translate(9.683 13.878)" fill="none" stroke="#cecece" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
-          <path id="Vector-5" data-name="Vector" d="M0,0H28.755V28.755H0Z" fill="none" opacity="0"/>
-        </g>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.0164 16.2572C19.5294 18.5297 19.2859 19.666 18.4608 20.333C17.6357 21 16.4737 21 14.1495 21H9.85053C7.52639 21 6.36432 21 5.53925 20.333C4.71418 19.666 4.47069 18.5297 3.98372 16.2572L3.55514 14.2572C2.83668 10.9043 2.47745 9.22793 3.378 8.11397C4.27855 7 5.99302 7 9.42196 7H14.5781C18.0071 7 19.7215 7 20.6221 8.11397C21.2929 8.94376 21.2647 10.0856 20.9097 12" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> <path d="M16 12H12M9 12H8" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M10 15H14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M18 9L15 3" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 9L9 3" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
