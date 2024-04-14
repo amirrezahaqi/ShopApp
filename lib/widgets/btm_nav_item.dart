@@ -31,12 +31,13 @@ class BtmNavItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(
+                height: AppDimens.large,
                 svgAssets,
                 colorFilter: ColorFilter.mode(
                     isActive
                         ? AppColors.btmNavActiveItem
                         : AppColors.btmNavInActiveItem,
-                    BlendMode.dst),
+                    BlendMode.srcIn),
               ),
               AppDimens.small.height,
               Text(labelText,

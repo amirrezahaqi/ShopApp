@@ -32,6 +32,7 @@ abstract class AppStrings {
   static const String viewAll = "مشاهده همه";
   static const String amazing = "شگفت انگیز";
   static const String home = "خانه";
+  static const String category = "دسته بندی";
   static const String basket = "سبد خرید";
   static const String profile = "پروفایل";
   static const String topSells = "پرفروش‌ها";

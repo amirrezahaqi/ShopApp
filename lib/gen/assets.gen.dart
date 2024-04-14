@@ -40,6 +40,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/cancelled.svg
   String get cancelled => 'assets/svg/cancelled.svg';
 
+  /// File path: assets/svg/category.svg
+  String get category => 'assets/svg/category.svg';
+
   /// File path: assets/svg/clasic.svg
   String get clasic => 'assets/svg/clasic.svg';
 
@@ -103,6 +106,7 @@ class $AssetsSvgGen {
         back,
         basket,
         cancelled,
+        category,
         clasic,
         close,
         delete,
