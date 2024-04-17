@@ -4,6 +4,7 @@ import 'package:shopnew/component/extension.dart';
 import '../component/text_style.dart';
 import '../res/dimens.dart';
 
+// ignore: must_be_immutable
 class AppTextField extends StatelessWidget {
   final String label;
   final String prefix;

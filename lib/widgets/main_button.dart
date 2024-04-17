@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../component/button_style.dart';
 import '../component/text_style.dart';
 
+// ignore: must_be_immutable
 class MainButton extends StatelessWidget {
   void Function() onPressed;
   final String text;

@@ -16,23 +16,20 @@ class RegistrationAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return PreferredSize(
         preferredSize: Size(size.width, size.height * 0.2),
-        child: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back)),
-              const Text(
-                AppStrings.register,
-                style: LightAppTextStyle.title,
-              )
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.arrow_back)),
+            const Text(
+              AppStrings.register,
+              style: LightAppTextStyle.title,
+            )
+          ],
         ));
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(size.height * .1);
 }

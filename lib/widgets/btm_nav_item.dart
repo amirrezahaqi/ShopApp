@@ -6,6 +6,7 @@ import '../component/text_style.dart';
 import '../res/colors.dart';
 import '../res/dimens.dart';
 
+// ignore: must_be_immutable
 class BtmNavItem extends StatelessWidget {
   String svgAssets;
   String labelText;
@@ -24,28 +25,26 @@ class BtmNavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ontap,
-      child: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(AppDimens.medium),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                height: AppDimens.large,
-                svgAssets,
-                colorFilter: ColorFilter.mode(
-                    isActive
-                        ? AppColors.btmNavActiveItem
-                        : AppColors.btmNavInActiveItem,
-                    BlendMode.srcIn),
-              ),
-              AppDimens.small.height,
-              Text(labelText,
-                  style: isActive
-                      ? LightAppTextStyle.btmNavActiveItem
-                      : LightAppTextStyle.btmNavInActiveItem)
-            ],
-          ),
+      child: Padding(
+        padding: const EdgeInsets.all(AppDimens.medium),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              height: AppDimens.large * 1.25,
+              svgAssets,
+              colorFilter: ColorFilter.mode(
+                  isActive
+                      ? AppColors.btmNavActiveItem
+                      : AppColors.btmNavInActiveItem,
+                  BlendMode.srcIn),
+            ),
+            AppDimens.small.height,
+            Text(labelText,
+                style: isActive
+                    ? LightAppTextStyle.btmNavActiveItem
+                    : LightAppTextStyle.btmNavInActiveItem)
+          ],
         ),
       ),
     );
