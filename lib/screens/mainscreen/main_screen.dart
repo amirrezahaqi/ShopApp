@@ -19,41 +19,68 @@ class BtmNavScreenIndex {
 }
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int selectedindex = BtmNavScreenIndex.home;
+  int selectedIndex = BtmNavScreenIndex.home;
+  late List<GlobalKey<NavigatorState>> _navigatorKeys;
+
+  @override
+  void initState() {
+    super.initState();
+    _navigatorKeys = List.generate(4, (_) => GlobalKey<NavigatorState>());
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     double btmNavHeight = size.height * .1;
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned(
+    // ignore: deprecated_member_use
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Positioned(
               top: 0,
               right: 0,
               left: 0,
               bottom: btmNavHeight,
               child: IndexedStack(
-                index: selectedindex,
+                index: selectedIndex,
                 children: [
                   Navigator(
+                    key: _navigatorKeys[BtmNavScreenIndex.home],
                     onGenerateRoute: (settings) => MaterialPageRoute(
                       builder: (context) => const HomeScreen(),
                     ),
                   ),
-                  const BasketScreen(),
-                  const CategoryScreen(),
-                  const ProfileScreen()
+                  Navigator(
+                    key: _navigatorKeys[BtmNavScreenIndex.basket],
+                    onGenerateRoute: (settings) => MaterialPageRoute(
+                      builder: (context) => const BasketScreen(),
+                    ),
+                  ),
+                  Navigator(
+                    key: _navigatorKeys[BtmNavScreenIndex.cat],
+                    onGenerateRoute: (settings) => MaterialPageRoute(
+                      builder: (context) => const CategoryScreen(),
+                    ),
+                  ),
+                  Navigator(
+                    key: _navigatorKeys[BtmNavScreenIndex.profile],
+                    onGenerateRoute: (settings) => MaterialPageRoute(
+                      builder: (context) => const ProfileScreen(),
+                    ),
+                  ),
                 ],
-              )),
-          Positioned(
+              ),
+            ),
+            Positioned(
               bottom: 0,
               right: 0,
               left: 0,
@@ -64,45 +91,59 @@ class _MainScreenState extends State<MainScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    BtmNavItem(
+                    _buildNavItem(
                       svgAssets: Assets.svg.user,
                       labelText: AppStrings.profile,
-                      ontap: () =>
-                          btmNavOnPressed(index: BtmNavScreenIndex.profile),
-                      isActive: selectedindex == BtmNavScreenIndex.profile,
+                      index: BtmNavScreenIndex.profile,
                     ),
-                    BtmNavItem(
+                    _buildNavItem(
                       svgAssets: Assets.svg.category,
                       labelText: AppStrings.category,
-                      ontap: () =>
-                          btmNavOnPressed(index: BtmNavScreenIndex.cat),
-                      isActive: selectedindex == BtmNavScreenIndex.cat,
+                      index: BtmNavScreenIndex.cat,
                     ),
-                    BtmNavItem(
+                    _buildNavItem(
                       svgAssets: Assets.svg.basket,
                       labelText: AppStrings.basket,
-                      ontap: () =>
-                          btmNavOnPressed(index: BtmNavScreenIndex.basket),
-                      isActive: selectedindex == BtmNavScreenIndex.basket,
+                      index: BtmNavScreenIndex.basket,
                     ),
-                    BtmNavItem(
+                    _buildNavItem(
                       svgAssets: Assets.svg.home,
                       labelText: AppStrings.home,
-                      ontap: () =>
-                          btmNavOnPressed(index: BtmNavScreenIndex.home),
-                      isActive: selectedindex == BtmNavScreenIndex.home,
+                      index: BtmNavScreenIndex.home,
                     ),
                   ],
                 ),
-              ))
-        ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  btmNavOnPressed({required index}) {
+  Widget _buildNavItem({
+    required String svgAssets,
+    required String labelText,
+    required int index,
+  }) {
+    return BtmNavItem(
+      svgAssets: svgAssets,
+      labelText: labelText,
+      ontap: () => btmNavOnPressed(index: index),
+      isActive: selectedIndex == index,
+    );
+  }
+
+  void btmNavOnPressed({required int index}) {
     setState(() {
-      selectedindex = index;
+      selectedIndex = index;
     });
+  }
+
+  Future<bool> _onWillPop() async {
+    if (_navigatorKeys[selectedIndex].currentState!.canPop()) {
+      _navigatorKeys[selectedIndex].currentState!.pop();
+    }
+    return false;
   }
 }
