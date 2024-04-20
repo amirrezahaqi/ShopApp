@@ -64,6 +64,7 @@ class _MainScreenState extends State<MainScreen> {
     var size = MediaQuery.of(context).size;
     double btmNavHeight = size.height * .1;
 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -157,7 +158,6 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {
       selectedindex = index;
       _routeHistory.add(selectedindex);
-      print(_routeHistory);
     });
   }
 }
