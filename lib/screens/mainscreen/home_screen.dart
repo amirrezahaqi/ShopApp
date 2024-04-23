@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../res/colors.dart';
+import '../../widgets/app_slider.dart';
 import '../../widgets/searchbar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,11 +8,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.primaryColor,
-      child: const Center(
-        child: SearchBarWidget(),
-      ),
+    return Scaffold(
+      body: SafeArea(
+          child: SingleChildScrollView(
+        child: Column(
+          children: [const SearchBarWidget(), AppSlider()],
+        ),
+      )),
     );
   }
 }
