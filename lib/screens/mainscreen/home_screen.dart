@@ -12,7 +12,12 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
-          children: [const SearchBarWidget(), AppSlider()],
+          children: [
+            SearchBarWidget(
+              ontap: () {},
+            ),
+            AppSlider()
+          ],
         ),
       )),
     );
