@@ -59,7 +59,7 @@ class _AppSliderState extends State<AppSlider> {
                   .entries
                   .map(
                     (e) => Padding(
-                      padding: const EdgeInsets.all(2.0),
+                      padding: const EdgeInsets.all(AppDimens.small / 2),
                       child: GestureDetector(
                         onTap: () => _controller.animateToPage(e.key),
                         child: Container(
