@@ -19,7 +19,8 @@ class VerticalText extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(Assets.svg.back),
+              Transform.rotate(
+                  angle: 1.5, child: SvgPicture.asset(Assets.svg.back)),
               const Text(
                 AppStrings.viewAll,
                 style: LightAppTextStyle.title,

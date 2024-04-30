@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
+import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/dimens.dart';
 
 import '../component/text_style.dart';
@@ -29,13 +30,11 @@ class CatWidget extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppDimens.large),
-                gradient: LinearGradient(
-                    colors: colors,
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter)),
-            height: size.height * 0.1,
-            width: size.height * 0.1,
+              borderRadius: BorderRadius.circular(AppDimens.large),
+              color: colors,
+            ),
+            height: size.height * 0.085,
+            width: size.height * 0.085,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -43,6 +42,7 @@ class CatWidget extends StatelessWidget {
                   height: AppDimens.large * 3,
                   child: SvgPicture.asset(
                     iconPath,
+                    color: AppColors.scaffoldBackgroundColor,
                   ),
                 ),
               ],
