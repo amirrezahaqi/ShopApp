@@ -9,7 +9,18 @@ import '../res/dimens.dart';
 class ProductBoxWidget extends StatelessWidget {
   const ProductBoxWidget({
     super.key,
+    required this.productName,
+    required this.price,
+    this.discount = 0,
+    this.discountOff = 0,
+    this.time = "0",
   });
+
+  final String productName;
+  final int price;
+  final int discount;
+  final int discountOff;
+  final String time;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +47,7 @@ class ProductBoxWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: Text(
-              "ساعت مچی مردانه",
+              productName,
               style: LightAppTextStyle.title.copyWith(fontSize: 18),
             ),
           ),
@@ -53,52 +64,64 @@ class ProductBoxWidget extends StatelessWidget {
                         style: LightAppTextStyle.title.copyWith(),
                       ),
                       Text(
-                        120000.seprateWithComma,
+                        price.seprateWithComma,
                         style: LightAppTextStyle.title.copyWith(),
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "تومان ",
-                        style: LightAppTextStyle.title.copyWith(
-                            decoration: TextDecoration.lineThrough,
-                            color: AppColors.hint),
-                      ),
-                      Text(
-                        "${180000.seprateWithComma} ",
-                        style: LightAppTextStyle.title.copyWith(
-                            decoration: TextDecoration.lineThrough,
-                            color: AppColors.hint),
-                      ),
-                    ],
+                  Visibility(
+                    visible: discount > 0 ? true : false,
+                    child: Row(
+                      children: [
+                        Text(
+                          "تومان ",
+                          style: LightAppTextStyle.title.copyWith(
+                              decoration: TextDecoration.lineThrough,
+                              color: AppColors.hint),
+                        ),
+                        Text(
+                          "${discount.seprateWithComma} ",
+                          style: LightAppTextStyle.title.copyWith(
+                              decoration: TextDecoration.lineThrough,
+                              color: AppColors.hint),
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
-              Container(
-                padding: const EdgeInsets.all(AppDimens.small * .5),
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(AppDimens.small)),
-                child: const Text(
-                  " %۲۰ ",
-                  style: LightAppTextStyle.button,
+              Visibility(
+                visible: discount > 0 ? true : false,
+                child: Container(
+                  padding: const EdgeInsets.all(AppDimens.small * .5),
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(AppDimens.small)),
+                  child: Text(
+                    "$discountOff %",
+                    style: LightAppTextStyle.button,
+                  ),
                 ),
               ),
             ],
           ),
           AppDimens.medium.height,
-          Container(
-            height: 2.5,
-            width: double.infinity,
-            color: AppColors.primaryColor,
+          Visibility(
+            visible: discount > 0 ? true : false,
+            child: Container(
+              height: 2.5,
+              width: double.infinity,
+              color: AppColors.primaryColor,
+            ),
           ),
           AppDimens.small.height,
-          Text(
-            "20:10:00",
-            style: LightAppTextStyle.title
-                .copyWith(fontSize: 25, color: AppColors.primaryColor),
+          Visibility(
+            visible: discount > 0 ? true : false,
+            child: Text(
+              time,
+              style: LightAppTextStyle.title
+                  .copyWith(fontSize: 25, color: AppColors.primaryColor),
+            ),
           ),
         ],
       ),

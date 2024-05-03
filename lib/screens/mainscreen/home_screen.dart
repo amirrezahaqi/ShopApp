@@ -71,11 +71,83 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: 8,
                       itemBuilder: (BuildContext context, int index) =>
-                          const ProductBoxWidget(),
+                          const ProductBoxWidget(
+                        productName: "ساعت مچی مردانه و زنانه",
+                        price: 100,
+                        discount: 20,
+                      ),
                     ),
                     const Padding(
                       padding: EdgeInsets.all(AppDimens.large),
-                      child: VerticalText(),
+                      child: VerticalText(
+                        title: AppStrings.topSells,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            AppDimens.large.height,
+            const AppSlider(),
+            AppDimens.medium.height,
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              reverse: true,
+              child: SizedBox(
+                height: size.height * .38,
+                child: Row(
+                  children: [
+                    AppDimens.large.height,
+                    ListView.builder(
+                      physics: const ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 8,
+                      itemBuilder: (BuildContext context, int index) =>
+                          const ProductBoxWidget(
+                        productName: "ساعت مچی مردانه و زنانه",
+                        price: 100,
+                        discount: 20,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(AppDimens.large),
+                      child: VerticalText(
+                        title: AppStrings.newestProduct,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            AppDimens.large.height,
+            const AppSlider(),
+            AppDimens.medium.height,
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              reverse: true,
+              child: SizedBox(
+                height: size.height * .38,
+                child: Row(
+                  children: [
+                    AppDimens.large.height,
+                    ListView.builder(
+                      physics: const ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 8,
+                      itemBuilder: (BuildContext context, int index) =>
+                          const ProductBoxWidget(
+                        productName: "ساعت مچی مردانه و زنانه",
+                        price: 100,
+                        discount: 20,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(AppDimens.large),
+                      child: VerticalText(
+                        title: AppStrings.amazing,
+                      ),
                     ),
                   ],
                 ),
