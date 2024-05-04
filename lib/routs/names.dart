@@ -1,5 +1,5 @@
-class ScreeNames {
-  ScreeNames._();
+class ScreenNames {
+  ScreenNames._();
 
   static const root = "/";
   static const getOtpScreen = "/getOtpScreen";

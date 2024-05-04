@@ -41,7 +41,7 @@ class GetOtpScreen extends StatelessWidget {
             ),
             MainButton(
               onPressed: () =>
-                  Navigator.pushNamed(context, ScreeNames.registerScreen),
+                  Navigator.pushNamed(context, ScreenNames.registerScreen),
               text: AppStrings.next,
             ),
           ],

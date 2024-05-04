@@ -27,7 +27,7 @@ class SendOtpScreen extends StatelessWidget {
             ),
             MainButton(
               onPressed: () =>
-                  Navigator.pushNamed(context, ScreeNames.getOtpScreen),
+                  Navigator.pushNamed(context, ScreenNames.getOtpScreen),
               text: AppStrings.next,
             ),
           ],
