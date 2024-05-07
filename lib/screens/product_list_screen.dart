@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/dimens.dart';
+import 'package:shopnew/widgets/product_box.dart';
 
 import '../component/text_style.dart';
 import '../gen/assets.gen.dart';
@@ -37,8 +38,13 @@ class ProductListScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: const Center(
-            child: Text("لیست محصولات", style: LightAppTextStyle.title),
+          body: Column(
+            children: [
+              AppDimens.medium.height,
+              const CatTags(),
+              AppDimens.medium.height,
+              const ProductListGridView()
+            ],
           )),
     );
   }
@@ -79,6 +85,58 @@ class CartBadge extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class CatTags extends StatelessWidget {
+  const CatTags({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppDimens.medium),
+      child: SizedBox(
+        height: 24,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 10,
+            itemBuilder: (context, i) {
+              return Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: AppDimens.small),
+                margin: const EdgeInsets.symmetric(horizontal: AppDimens.small),
+                decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(AppDimens.large)),
+                child: const Text(
+                  "نیوفورس",
+                  style: LightAppTextStyle.button,
+                ),
+              );
+            }),
+      ),
+    );
+  }
+}
+
+class ProductListGridView extends StatelessWidget {
+  const ProductListGridView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: .7,
+              crossAxisCount: 2,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2),
+          itemCount: 20,
+          itemBuilder: (context, i) {
+            return const ProductBoxWidget(
+                productName: "ساعت مچی مردانه", price: 100000);
+          }),
     );
   }
 }
