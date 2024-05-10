@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
-import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/widgets/product_box.dart';
 
 import '../component/text_style.dart';
 import '../gen/assets.gen.dart';
 import '../widgets/app_bar.dart';
+import '../widgets/cart_bridge.dart';
+import '../widgets/cart_tags.dart';
 
 class ProductListScreen extends StatelessWidget {
   const ProductListScreen({super.key});
@@ -46,76 +47,6 @@ class ProductListScreen extends StatelessWidget {
               const ProductListGridView()
             ],
           )),
-    );
-  }
-}
-
-class CartBadge extends StatelessWidget {
-  const CartBadge({super.key, required this.count});
-  final count;
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const SizedBox(
-          height: 30,
-          width: 30,
-        ),
-        SvgPicture.asset(
-          Assets.svg.basket,
-        ),
-        Visibility(
-          visible: count > 0 ? true : false,
-          child: Positioned(
-            top: 5,
-            right: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.red,
-                  border: Border.all(width: 2, color: AppColors.appbar)),
-              child: Padding(
-                padding: const EdgeInsets.all(2.5),
-                child: Text(
-                  count.toString(),
-                  style: LightAppTextStyle.button.copyWith(fontSize: 10),
-                ),
-              ),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class CatTags extends StatelessWidget {
-  const CatTags({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDimens.medium),
-      child: SizedBox(
-        height: 24,
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, i) {
-              return Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: AppDimens.small),
-                margin: const EdgeInsets.symmetric(horizontal: AppDimens.small),
-                decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(AppDimens.large)),
-                child: const Text(
-                  "نیوفورس",
-                  style: LightAppTextStyle.button,
-                ),
-              );
-            }),
-      ),
     );
   }
 }
