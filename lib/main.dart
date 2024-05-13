@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopnew/screens/product_single_screen.dart';
 
 import 'component/themes.dart';
 import 'routs/names.dart';
+import 'screens/mainscreen/basket_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Sky Line",
       theme: lightTheme(),
-      home: const ProductSingleScreen(),
+      home: const BasketScreen(),
       initialRoute: ScreenNames.root,
       // routes: routs,
     );
