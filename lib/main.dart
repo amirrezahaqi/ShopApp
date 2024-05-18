@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'component/themes.dart';
 import 'routs/names.dart';
-import 'screens/mainscreen/basket_screen.dart';
+import 'routs/routs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Sky Line",
       theme: lightTheme(),
-      home: const BasketScreen(),
+      // home: const HomeScreen(),
       initialRoute: ScreenNames.root,
-      // routes: routs,
+      routes: routs,
     );
   }
 }

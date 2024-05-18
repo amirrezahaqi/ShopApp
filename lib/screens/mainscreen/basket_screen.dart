@@ -9,6 +9,7 @@ import 'package:shopnew/widgets/cart_bridge.dart';
 
 import '../../component/text_style.dart';
 import '../../res/dimens.dart';
+import '../../widgets/main_button.dart';
 
 class BasketScreen extends StatelessWidget {
   const BasketScreen({super.key});
@@ -92,10 +93,87 @@ class BasketScreen extends StatelessWidget {
                         child: ShopingCartItem(size: size),
                       ),
                       itemCount: 20,
-                    )
+                    ),
+                    AppDimens.large2x.height
                   ],
                 ),
               ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                left: 0,
+                child: Container(
+                  color: AppColors.appbar,
+                  height: 70,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "تومان",
+                                      style: LightAppTextStyle.title.copyWith(),
+                                    ),
+                                    Text(
+                                      100000.seprateWithComma,
+                                      style: LightAppTextStyle.title.copyWith(),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "تومان ",
+                                      style: LightAppTextStyle.title.copyWith(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: AppColors.hint),
+                                    ),
+                                    Text(
+                                      120000.seprateWithComma,
+                                      style: LightAppTextStyle.title.copyWith(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: AppColors.hint),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Container(
+                              padding:
+                                  const EdgeInsets.all(AppDimens.small * .5),
+                              decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius:
+                                      BorderRadius.circular(AppDimens.small)),
+                              child: const Text(
+                                "20%",
+                                style: LightAppTextStyle.button,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: size.width * .3,
+                          child: MainButton(
+                            text: "ادامه خرید",
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           )),
     );
