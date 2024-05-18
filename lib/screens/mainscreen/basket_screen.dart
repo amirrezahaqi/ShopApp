@@ -83,11 +83,103 @@ class BasketScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    ListView.builder(
+                      physics: const ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (BuildContext context, int index) => Padding(
+                        padding: const EdgeInsets.all(AppDimens.medium),
+                        child: ShopingCartItem(size: size),
+                      ),
+                      itemCount: 20,
+                    )
                   ],
                 ),
               ),
             ],
           )),
+    );
+  }
+}
+
+class ShopingCartItem extends StatelessWidget {
+  const ShopingCartItem({
+    super.key,
+    required this.size,
+  });
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size.width * .99,
+      decoration: BoxDecoration(
+          border: Border.all(color: AppColors.borderColor, width: .5),
+          color: AppColors.btmNavColor,
+          borderRadius:
+              const BorderRadius.all(Radius.circular(AppDimens.medium))),
+      child: Padding(
+        padding: const EdgeInsets.all(AppDimens.medium * 1.5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "ساعت مچی مردانه و زنانه",
+                        style: LightAppTextStyle.title,
+                      ),
+                      const Text(
+                        "قیمت : 20000 تومان",
+                        style: LightAppTextStyle.hint,
+                        overflow: TextOverflow.clip,
+                      ),
+                      const Text(
+                        "با تخفیف : 10000 تومان",
+                        style: LightAppTextStyle.falsenumber,
+                        overflow: TextOverflow.clip,
+                      ),
+                      AppDimens.medium.width,
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          IconButton(
+                              onPressed: () {},
+                              icon: SvgPicture.asset(Assets.svg.delete)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(Assets.svg.plus),
+                              ),
+                              const Text(
+                                "عدد 0",
+                                style: LightAppTextStyle.title,
+                              ),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: SvgPicture.asset(Assets.svg.minus))
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            AppDimens.medium.width,
+            Image.asset(Assets.png.unnamed.path)
+          ],
+        ),
+      ),
     );
   }
 }
