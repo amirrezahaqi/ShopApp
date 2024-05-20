@@ -94,6 +94,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/sort.svg
   String get sort => 'assets/svg/sort.svg';
 
+  /// File path: assets/svg/terms.svg
+  String get terms => 'assets/svg/terms.svg';
+
   /// File path: assets/svg/user.svg
   String get user => 'assets/svg/user.svg';
 
@@ -124,6 +127,7 @@ class $AssetsSvgGen {
         search,
         smart,
         sort,
+        terms,
         user,
         userMenu
       ];

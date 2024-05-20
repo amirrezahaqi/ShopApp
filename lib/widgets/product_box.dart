@@ -34,10 +34,12 @@ class ProductBoxWidget extends StatelessWidget {
             width: 1,
           ),
           borderRadius: BorderRadius.circular(AppDimens.medium),
-          gradient: const LinearGradient(
-              end: Alignment.bottomCenter,
-              begin: Alignment.topCenter,
-              colors: AppColors.productBgGradiant)),
+          color: AppColors.mainBg
+          // gradient: const LinearGradient(
+          //     end: Alignment.bottomCenter,
+          //     begin: Alignment.topCenter,
+          //     colors: AppColors.productBgGradiant)
+          ),
       width: size.width * .5,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -229,13 +229,21 @@ class ShopingCartItem extends StatelessWidget {
                         children: [
                           IconButton(
                               onPressed: () {},
-                              icon: SvgPicture.asset(Assets.svg.delete)),
+                              icon: SvgPicture.asset(
+                                Assets.svg.delete,
+                                colorFilter: const ColorFilter.mode(
+                                    AppColors.red, BlendMode.srcIn),
+                              )),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               IconButton(
                                 onPressed: () {},
-                                icon: SvgPicture.asset(Assets.svg.plus),
+                                icon: SvgPicture.asset(
+                                  Assets.svg.plus,
+                                  colorFilter: const ColorFilter.mode(
+                                      AppColors.borderColor, BlendMode.srcIn),
+                                ),
                               ),
                               const Text(
                                 "عدد 0",
@@ -243,7 +251,11 @@ class ShopingCartItem extends StatelessWidget {
                               ),
                               IconButton(
                                   onPressed: () {},
-                                  icon: SvgPicture.asset(Assets.svg.minus))
+                                  icon: SvgPicture.asset(
+                                    Assets.svg.minus,
+                                    colorFilter: const ColorFilter.mode(
+                                        AppColors.borderColor, BlendMode.srcIn),
+                                  ))
                             ],
                           ),
                         ],

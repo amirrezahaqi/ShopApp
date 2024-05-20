@@ -18,11 +18,11 @@ class AppColors {
       Color.fromARGB(255, 251, 251, 251);
   static const Color borderColor = Colors.grey;
   static const Color focusedBorderColor = Color.fromARGB(255, 89, 139, 231);
-  static const Color primaryColor = Color.fromARGB(255, 89, 139, 231);
-  static const Color catDesktopColors = Color.fromARGB(255, 89, 139, 231);
-  static const Color catDigitalColors = Color.fromARGB(255, 89, 139, 231);
-  static const Color catSmartColors = Color.fromARGB(255, 89, 139, 231);
-  static const Color catClasicColors = Color.fromARGB(255, 89, 139, 231);
+  static const Color primaryColor = Color.fromRGBO(79, 145, 231, 1);
+  static const Color catDesktopColors = Color.fromRGBO(79, 145, 231, 1);
+  static const Color catDigitalColors = Color.fromRGBO(79, 145, 231, 1);
+  static const Color catSmartColors = Color.fromRGBO(79, 145, 231, 1);
+  static const Color catClasicColors = Color.fromRGBO(79, 145, 231, 1);
   static const Color surfaceColor = Color.fromARGB(255, 243, 243, 243);
   static const Color focusedTextField = Colors.white;
   static const Color unFocusedTextField = Color.fromARGB(255, 251, 251, 251);
@@ -32,4 +32,5 @@ class AppColors {
   static const Color btmNavInActiveItem = Color.fromARGB(255, 196, 196, 196);
   static const Color success = Colors.green;
   static const Color onSuccess = Colors.white;
+  static const Color red = Colors.red;
 }

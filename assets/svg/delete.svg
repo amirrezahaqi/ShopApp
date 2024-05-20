@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="21.292" height="23.975" viewBox="0 0 21.292 23.975">
-  <g id="delete" transform="translate(-22.893 0.1)">
-    <g id="Group_235" data-name="Group 235" transform="translate(22.993 0)">
-      <g id="Group_234" data-name="Group 234" transform="translate(0)">
-        <path id="Path_118" data-name="Path 118" d="M77.055,114.909H61.632a.61.61,0,0,0-.457.152.518.518,0,0,0-.152.457l1.585,13.807a3.017,3.017,0,0,0,3.017,2.652h7.681a3.017,3.017,0,0,0,3.048-2.743l1.311-13.777a.518.518,0,0,0-.152-.4A.609.609,0,0,0,77.055,114.909Zm-1.92,14.264a1.768,1.768,0,0,1-1.829,1.585H65.625a1.737,1.737,0,0,1-1.8-1.554L62.3,116.128H76.384Z" transform="translate(-58.797 -108.203)" fill="#888d9b" stroke="#707070" stroke-width="0.2"/>
-        <path id="Path_119" data-name="Path 119" d="M43.475,2.743H37.2V1.768A1.707,1.707,0,0,0,35.552,0H31.619a1.707,1.707,0,0,0-1.738,1.675q0,.046,0,.093v.975H23.6a.61.61,0,0,0,0,1.219H43.475a.61.61,0,1,0,0-1.219Zm-7.5-.975v.975H31.1V1.768a.488.488,0,0,1,.518-.549h3.84a.488.488,0,0,1,.521.452A.482.482,0,0,1,35.977,1.768Z" transform="translate(-22.993 0)" fill="#888d9b" stroke="#707070" stroke-width="0.2"/>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9.17065 4C9.58249 2.83481 10.6937 2 11.9999 2C13.3062 2 14.4174 2.83481 14.8292 4" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20.5 6H3.49988" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> <path d="M18.3735 15.3991C18.1965 18.054 18.108 19.3815 17.243 20.1907C16.378 21 15.0476 21 12.3868 21H11.6134C8.9526 21 7.6222 21 6.75719 20.1907C5.89218 19.3815 5.80368 18.054 5.62669 15.3991L5.16675 8.5M18.8334 8.5L18.6334 11.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> <path d="M9.5 11L10 16" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> <path d="M14.5 11L14 16" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
