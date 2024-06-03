@@ -9,7 +9,7 @@ import '../screens/product_list_screen.dart';
 import '../screens/product_single_screen.dart';
 
 Map<String, Widget Function(BuildContext)> routs = {
-  ScreenNames.root: (context) => SendSmsScreen(),
+  ScreenNames.sendSmsScreen: (context) => SendSmsScreen(),
   ScreenNames.verifyCodeScreen: (context) => VerifyCodeScreen(),
   ScreenNames.registerScreen: (context) => RegisterScreen(),
   ScreenNames.mainScreen: (context) => const MainScreen(),

@@ -7,7 +7,9 @@ import 'package:shopnew/data/src/constants.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit() : super(AuthInitial()) {
+    emit(LoggedInState());
+  }
 
   final Dio _dio = Dio();
 
