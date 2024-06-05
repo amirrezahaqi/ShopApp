@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/screens/mainscreen/basket_screen.dart';
-import 'package:shopnew/screens/mainscreen/category_screen.dart';
 import 'package:shopnew/screens/mainscreen/profile_screen.dart';
 
 import '../../res/strings.dart';
@@ -14,8 +13,8 @@ class BtmNavScreenIndex {
 
   static const int home = 0;
   static const int basket = 1;
-  static const int cat = 2;
-  static const int profile = 3;
+  // static const int cat = 2;
+  static const int profile = 2;
 }
 
 class MainScreen extends StatefulWidget {
@@ -31,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
   final GlobalKey<NavigatorState> _homeKey = GlobalKey();
   final GlobalKey<NavigatorState> _basketKey = GlobalKey();
   final GlobalKey<NavigatorState> _profileKey = GlobalKey();
-  final GlobalKey<NavigatorState> _catKey = GlobalKey();
+  // final GlobalKey<NavigatorState> _catKey = GlobalKey();
 
   Map<int, GlobalKey<NavigatorState>> map = {};
 
@@ -42,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
       BtmNavScreenIndex.home: _homeKey,
       BtmNavScreenIndex.basket: _basketKey,
       BtmNavScreenIndex.profile: _profileKey,
-      BtmNavScreenIndex.cat: _catKey,
+      // BtmNavScreenIndex.cat: _catKey,
     };
   }
 
@@ -90,12 +89,12 @@ class _MainScreenState extends State<MainScreen> {
                       builder: (context) => const BasketScreen(),
                     ),
                   ),
-                  Navigator(
-                    key: _catKey,
-                    onGenerateRoute: (settings) => MaterialPageRoute(
-                      builder: (context) => const CategoryScreen(),
-                    ),
-                  ),
+                  // Navigator(
+                  //   key: _catKey,
+                  //   onGenerateRoute: (settings) => MaterialPageRoute(
+                  //     builder: (context) => const CategoryScreen(),
+                  //   ),
+                  // ),
                   Navigator(
                     key: _profileKey,
                     onGenerateRoute: (settings) => MaterialPageRoute(
@@ -123,13 +122,13 @@ class _MainScreenState extends State<MainScreen> {
                           btmNavOnPressed(index: BtmNavScreenIndex.profile),
                       isActive: selectedindex == BtmNavScreenIndex.profile,
                     ),
-                    BtmNavItem(
-                      svgAssets: Assets.svg.category,
-                      labelText: AppStrings.category,
-                      ontap: () =>
-                          btmNavOnPressed(index: BtmNavScreenIndex.cat),
-                      isActive: selectedindex == BtmNavScreenIndex.cat,
-                    ),
+                    // BtmNavItem(
+                    //   svgAssets: Assets.svg.category,
+                    //   labelText: AppStrings.category,
+                    //   ontap: () =>
+                    //       btmNavOnPressed(index: BtmNavScreenIndex.cat),
+                    //   isActive: selectedindex == BtmNavScreenIndex.cat,
+                    // ),
                     BtmNavItem(
                       svgAssets: Assets.svg.basket,
                       labelText: AppStrings.basket,

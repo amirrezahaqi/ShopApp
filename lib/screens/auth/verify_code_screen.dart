@@ -15,6 +15,7 @@ class VerifyCodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mobileRouteArg = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       body: SizedBox(
         width: double.infinity,
@@ -27,7 +28,7 @@ class VerifyCodeScreen extends StatelessWidget {
             Text(
                 AppStrings.otpCodeSendFor.replaceAll(
                   AppStrings.replace,
-                  "09123456789",
+                  mobileRouteArg,
                 ),
                 style: LightAppTextStyle.title),
             AppDimens.medium.height,
