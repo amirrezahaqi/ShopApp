@@ -39,7 +39,11 @@ class AuthCubit extends Cubit<AuthState> {
         (value) {
           debugPrint(value.toString());
           if (value.statusCode == 201) {
-            emit(VerifiedState());
+            if (value.data["data"]["is_registered"]) {
+              emit(VerifiedIsRegisteredState());
+            } else {
+              emit(VerifiedIsNotRegisteredState());
+            }
           } else {
             emit(ErrorState());
           }

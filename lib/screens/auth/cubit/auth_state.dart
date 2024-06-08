@@ -20,7 +20,9 @@ final class SentState extends AuthState {
   });
 }
 
-final class VerifiedState extends AuthState {}
+final class VerifiedIsRegisteredState extends AuthState {}
+
+final class VerifiedIsNotRegisteredState extends AuthState {}
 
 final class LoggedInState extends AuthState {}
 

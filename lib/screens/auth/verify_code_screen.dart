@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
+import 'package:shopnew/screens/auth/cubit/auth_cubit.dart';
 
 import '../../component/text_style.dart';
 import '../../routs/names.dart';
@@ -40,10 +42,27 @@ class VerifyCodeScreen extends StatelessWidget {
               label: AppStrings.enterYourNumber,
               prefix: "20:20",
             ),
-            MainButton(
-              onPressed: () =>
-                  Navigator.pushNamed(context, ScreenNames.registerScreen),
-              text: AppStrings.next,
+            BlocConsumer<AuthCubit, AuthState>(
+              listener: (context, state) {
+                if (state is VerifiedIsNotRegisteredState) {
+                  Navigator.pushNamed(context, ScreenNames.registerScreen);
+                } else if (state is VerifiedIsRegisteredState) {
+                  Navigator.pushNamed(context, ScreenNames.mainScreen);
+                }
+              },
+              builder: (context, state) {
+                if (state is LoadingState) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  return MainButton(
+                    onPressed: () {
+                      BlocProvider.of<AuthCubit>(context)
+                          .verifyCode(mobileRouteArg, _controller.text);
+                    },
+                    text: AppStrings.next,
+                  );
+                }
+              },
             ),
           ],
         ),
