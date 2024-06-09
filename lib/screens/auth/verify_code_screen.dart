@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopnew/component/extension.dart';
@@ -11,9 +13,46 @@ import '../../routs/names.dart';
 import '../../widgets/app_text_field.dart';
 import '../../widgets/main_button.dart';
 
-class VerifyCodeScreen extends StatelessWidget {
-  VerifyCodeScreen({super.key});
+class VerifyCodeScreen extends StatefulWidget {
+  const VerifyCodeScreen({super.key});
+
+  @override
+  State<VerifyCodeScreen> createState() => _VerifyCodeScreenState();
+}
+
+class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
   final TextEditingController _controller = TextEditingController();
+  @override
+  initState() {
+    super.initState();
+    startTimer();
+  }
+
+  late Timer _timer;
+  int _start = 10;
+
+  startTimer() {
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(oneSec, (timer) {
+      setState(() {
+        if (_start == 0) {
+          _timer.cancel();
+          Navigator.of(context).pop();
+        } else {
+          _start--;
+        }
+      });
+    });
+  }
+
+  String formatTime(int sec) {
+    int min = sec ~/ 60;
+    int seconds = sec % 60;
+
+    String minStr = min.toString().padLeft(2, "0");
+    String secondsStr = seconds.toString().padLeft(2, "0");
+    return "$minStr:$secondsStr";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +73,16 @@ class VerifyCodeScreen extends StatelessWidget {
                 ),
                 style: LightAppTextStyle.title),
             AppDimens.medium.height,
-            const Text(AppStrings.wrongNumberEditNumber,
-                style: LightAppTextStyle.falsenumber),
+            GestureDetector(
+              onTap: () => Navigator.of(context).pop(),
+              child: const Text(AppStrings.wrongNumberEditNumber,
+                  style: LightAppTextStyle.falsenumber),
+            ),
             AppTextField(
               hint: AppStrings.hintPhoneNumber,
               controller: _controller,
               label: AppStrings.enterYourNumber,
-              prefix: "20:20",
+              prefix: formatTime(_start),
             ),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
