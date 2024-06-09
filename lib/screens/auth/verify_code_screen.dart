@@ -38,6 +38,13 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
         if (_start == 0) {
           _timer.cancel();
           Navigator.of(context).pop();
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              backgroundColor: Colors.red,
+              duration: Duration(milliseconds: 800),
+              content: Text(
+                AppStrings.errorSendVerifyCode,
+                style: LightAppTextStyle.button,
+              )));
         } else {
           _start--;
         }

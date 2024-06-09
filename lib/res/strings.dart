@@ -7,6 +7,7 @@ abstract class AppStrings {
   static const String enterVerificationCode = "کد فعال سازی را وارد کنید";
   static const String hintVerificationCode = "- - - - - -";
   static const String next = "ادامه";
+  static const String errorSendVerifyCode = "زمان ارسال کد منقضی شده است";
 
   static const String otpCodeSendFor = "کد فعال سازی برای $replace ارسال شد";
   static const String register = "ثبت نام ";
