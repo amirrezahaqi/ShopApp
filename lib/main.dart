@@ -3,11 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopnew/screens/auth/cubit/auth_cubit.dart';
 import 'package:shopnew/screens/auth/send_sms_screen.dart';
 import 'package:shopnew/screens/mainscreen/main_screen.dart';
+import 'package:shopnew/utils/shared_prefrences_manager.dart';
 
 import 'component/themes.dart';
 import 'routs/routs.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefrencesManager().init();
   runApp(const MyApp());
 }
 
