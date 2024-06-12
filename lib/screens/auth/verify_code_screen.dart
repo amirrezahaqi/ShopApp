@@ -29,7 +29,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
   }
 
   late Timer _timer;
-  int _start = 10;
+  int _start = 120;
 
   startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -93,6 +93,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
             ),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
+                _timer.cancel();
                 if (state is VerifiedIsNotRegisteredState) {
                   Navigator.pushNamed(context, ScreenNames.registerScreen);
                 } else if (state is VerifiedIsRegisteredState) {
