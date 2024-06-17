@@ -6,10 +6,10 @@ import 'package:shopnew/res/strings.dart';
 import 'package:shopnew/routs/names.dart';
 import 'package:shopnew/utils/image_handler.dart';
 
-import '../widgets/app_text_field.dart';
-import '../widgets/avatar.dart';
-import '../widgets/main_button.dart';
-import '../widgets/registration_appbar.dart';
+import '../../../widgets/app_text_field.dart';
+import '../../../widgets/avatar.dart';
+import '../../../widgets/main_button.dart';
+import '../../../widgets/registration_appbar.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
