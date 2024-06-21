@@ -6,8 +6,8 @@ class User {
   final String address;
   final String postalCode;
   final image;
-  final String lat;
-  final String lng;
+  final double lat;
+  final double lng;
   User({
     required this.name,
     required this.phone,
