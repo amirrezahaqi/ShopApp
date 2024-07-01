@@ -10,7 +10,7 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial()) {
-    emit(LoggedOutState());
+    emit(LoggedInState());
   }
 
   final Dio _dio = Dio();

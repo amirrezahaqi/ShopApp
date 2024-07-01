@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopnew/data/product_repository_test.dart';
 import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/screens/mainscreen/basket_screen.dart';
@@ -43,6 +44,8 @@ class _MainScreenState extends State<MainScreen> {
       BtmNavScreenIndex.profile: _profileKey,
       // BtmNavScreenIndex.cat: _catKey,
     };
+
+    ProductRepoTest().getProducts();
   }
 
   Future<bool> _onWillPop() async {

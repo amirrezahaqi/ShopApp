@@ -21,7 +21,7 @@ class ProductRemoteDataSrc implements IProductDataSrc {
     final response =
         await httpClient.get(Endpoints.productsByBrand + id.toString());
     HTTpResponceValidator.isValidStatusCode(response.statusCode!);
-    for (var element in (response.data['data'] as List)) {
+    for (var element in (response.data['all_products']['data'] as List)) {
       products.add(Product.fromJson(element));
     }
     return products;
@@ -33,7 +33,7 @@ class ProductRemoteDataSrc implements IProductDataSrc {
     final response =
         await httpClient.get(Endpoints.productsByCategory + id.toString());
     HTTpResponceValidator.isValidStatusCode(response.statusCode!);
-    for (var element in (response.data['data'] as List)) {
+    for (var element in (response.data['all_products']['data'] as List)) {
       products.add(Product.fromJson(element));
     }
     return products;
@@ -44,7 +44,7 @@ class ProductRemoteDataSrc implements IProductDataSrc {
     List<Product> products = <Product>[];
     final response = await httpClient.get(Endpoints.baseUrl + routeParam);
     HTTpResponceValidator.isValidStatusCode(response.statusCode!);
-    for (var element in (response.data['data'] as List)) {
+    for (var element in (response.data['all_products']['data'] as List)) {
       products.add(Product.fromJson(element));
     }
     return products;
@@ -55,7 +55,7 @@ class ProductRemoteDataSrc implements IProductDataSrc {
     List<Product> products = <Product>[];
     final response = await httpClient.get(Endpoints.baseUrl + searchKey);
     HTTpResponceValidator.isValidStatusCode(response.statusCode!);
-    for (var element in (response.data['data'] as List)) {
+    for (var element in (response.data['all_products']['data'] as List)) {
       products.add(Product.fromJson(element));
     }
     return products;
