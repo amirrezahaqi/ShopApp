@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:shopnew/data/src/constants.dart';
+import 'package:shopnew/data/constants.dart';
 import 'package:shopnew/utils/shared_prefrences_keys.dart';
 import 'package:shopnew/utils/shared_prefrences_manager.dart';
 

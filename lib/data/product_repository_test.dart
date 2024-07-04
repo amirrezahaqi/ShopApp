@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:shopnew/data/constants.dart';
 import 'package:shopnew/data/repo/product_repo.dart';
-import 'package:shopnew/data/src/constants.dart';
 import 'package:shopnew/data/src/product_data_src.dart';
 
 class ProductRepoTest {
