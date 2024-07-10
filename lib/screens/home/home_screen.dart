@@ -48,17 +48,21 @@ class HomeScreen extends StatelessWidget {
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: state.home.categories.length,
+                          shrinkWrap: true,
                           itemBuilder: (c, i) {
-                            return CatWidget(
-                                iconPath: state.home.categories[i].image,
-                                ontap: () {
-                                  // ignore: avoid_print
-                                  print("id:${state.home.categories[i].id}");
-                                },
-                                colors: i.isEven
-                                    ? AppColors.catDesktopColors
-                                    : AppColors.focusedBorderColor,
-                                label: state.home.categories[i].title);
+                            return Padding(
+                              padding: const EdgeInsets.all(7),
+                              child: CatWidget(
+                                  iconPath: state.home.categories[i].image,
+                                  ontap: () {
+                                    // ignore: avoid_print
+                                    print("id:${state.home.categories[i].id}");
+                                  },
+                                  colors: i.isEven
+                                      ? AppColors.catDesktopColors
+                                      : AppColors.focusedBorderColor,
+                                  label: state.home.categories[i].title),
+                            );
                           }),
                     ),
                     AppDimens.medium.height,
@@ -136,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       reverse: true,
                       child: SizedBox(
-                        height: size.height * .38,
+                        height: size.height * .43,
                         child: Row(
                           children: [
                             AppDimens.large.height,

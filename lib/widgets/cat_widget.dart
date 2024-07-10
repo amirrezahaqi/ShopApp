@@ -37,7 +37,7 @@ class CatWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: AppDimens.large * 3,
+                  height: AppDimens.large * 2.5,
                   child: Image.network(
                     iconPath,
                     // color: AppColors.scaffoldBackgroundColor,
