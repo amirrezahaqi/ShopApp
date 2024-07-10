@@ -7,7 +7,7 @@ import 'package:shopnew/screens/mainscreen/profile_screen.dart';
 
 import '../../res/strings.dart';
 import '../../widgets/btm_nav_item.dart';
-import 'home_screen.dart';
+import '../home/home_screen.dart';
 
 class BtmNavScreenIndex {
   BtmNavScreenIndex._();
