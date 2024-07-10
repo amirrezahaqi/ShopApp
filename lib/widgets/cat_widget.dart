@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
-import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/dimens.dart';
 
 import '../component/text_style.dart';
@@ -40,9 +38,9 @@ class CatWidget extends StatelessWidget {
               children: [
                 SizedBox(
                   height: AppDimens.large * 3,
-                  child: SvgPicture.asset(
+                  child: Image.network(
                     iconPath,
-                    color: AppColors.scaffoldBackgroundColor,
+                    // color: AppColors.scaffoldBackgroundColor,
                   ),
                 ),
               ],

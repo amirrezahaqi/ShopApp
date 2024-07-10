@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/data/repo/home_repo.dart';
-import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
@@ -44,34 +43,23 @@ class HomeScreen extends StatelessWidget {
                       imgList: state.home.sliders,
                     ),
                     AppDimens.medium.height,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        CatWidget(
-                          iconPath: Assets.svg.clasic,
-                          ontap: () {},
-                          colors: AppColors.catClasicColors,
-                          label: AppStrings.classic,
-                        ),
-                        CatWidget(
-                          iconPath: Assets.svg.smart,
-                          ontap: () {},
-                          colors: AppColors.catDesktopColors,
-                          label: AppStrings.desktop,
-                        ),
-                        CatWidget(
-                          iconPath: Assets.svg.clasic,
-                          ontap: () {},
-                          colors: AppColors.catDigitalColors,
-                          label: AppStrings.digital,
-                        ),
-                        CatWidget(
-                          iconPath: Assets.svg.smart,
-                          ontap: () {},
-                          colors: AppColors.catSmartColors,
-                          label: AppStrings.smart,
-                        ),
-                      ],
+                    SizedBox(
+                      height: size.height / 7,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: state.home.categories.length,
+                          itemBuilder: (c, i) {
+                            return CatWidget(
+                                iconPath: state.home.categories[i].image,
+                                ontap: () {
+                                  // ignore: avoid_print
+                                  print("id:${state.home.categories[i].id}");
+                                },
+                                colors: i.isEven
+                                    ? AppColors.catDesktopColors
+                                    : AppColors.focusedBorderColor,
+                                label: state.home.categories[i].title);
+                          }),
                     ),
                     AppDimens.medium.height,
                     SingleChildScrollView(
