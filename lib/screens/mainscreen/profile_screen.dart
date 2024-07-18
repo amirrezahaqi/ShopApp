@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/gen/assets.gen.dart';
+import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/strings.dart';
 import 'package:shopnew/widgets/app_bar.dart';
+import 'package:shopnew/widgets/sale_status_widget.dart';
 
 import '../../component/text_style.dart';
-import '../../res/colors.dart';
 import '../../res/dimens.dart';
-import '../../widgets/cat_widget.dart';
 import '../../widgets/setting_item.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -98,19 +98,19 @@ class ProfileScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        CatWidget(
+                        SaleStatusWidget(
                           iconPath: Assets.svg.cancelled,
                           ontap: () {},
                           colors: AppColors.catClasicColors,
                           label: AppStrings.cancelled,
                         ),
-                        CatWidget(
+                        SaleStatusWidget(
                           iconPath: Assets.svg.inProccess,
                           ontap: () {},
                           colors: AppColors.catClasicColors,
                           label: AppStrings.inProccess,
                         ),
-                        CatWidget(
+                        SaleStatusWidget(
                           iconPath: Assets.svg.delivered,
                           ontap: () {},
                           colors: AppColors.catClasicColors,
@@ -118,6 +118,8 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+
+                    //Todo:اصلاح شود
                     AppDimens.large.height
                   ],
                 ),

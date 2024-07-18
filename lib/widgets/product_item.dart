@@ -2,25 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:shopnew/component/extension.dart';
 
 import '../component/text_style.dart';
-import '../gen/assets.gen.dart';
 import '../res/colors.dart';
 import '../res/dimens.dart';
 
-class ProductBoxWidget extends StatelessWidget {
-  const ProductBoxWidget({
+class ProductItem extends StatefulWidget {
+  const ProductItem({
     super.key,
     required this.productName,
     required this.price,
     this.discount = 0,
-    this.discountOff = 0,
-    this.time = "0",
+    this.oldPrice = 0,
+    this.specialExpiration = "2024-06-13 00:00:00",
+    this.image = "",
   });
 
   final String productName;
   final int price;
   final int discount;
-  final int discountOff;
-  final String time;
+  final int oldPrice;
+  final String specialExpiration;
+  final String image;
+
+  @override
+  State<ProductItem> createState() => _ProductItemState();
+}
+
+class _ProductItemState extends State<ProductItem> {
+  Duration _duration = const Duration(seconds: 0);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    DateTime now = DateTime.now();
+    DateTime expiration = DateTime.parse(widget.specialExpiration);
+    _duration = now.difference(expiration).abs();
+    int hours = _duration.inHours;
+    int minuts = _duration.inMinutes.remainder(60);
+    int seconds = _duration.inSeconds.remainder(60);
+    print("$hours:$minuts:$seconds");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +62,16 @@ class ProductBoxWidget extends StatelessWidget {
           //     begin: Alignment.topCenter,
           //     colors: AppColors.productBgGradiant)
           ),
-      width: size.width * .5,
+      width: size.width * .7,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(Assets.png.unnamed.path),
+          SizedBox(width: size.width * .4, child: Image.network(widget.image)),
           AppDimens.medium.height,
           Align(
             alignment: Alignment.centerRight,
             child: Text(
-              productName,
+              widget.productName,
               style: LightAppTextStyle.title.copyWith(fontSize: 18),
             ),
           ),
@@ -66,13 +88,13 @@ class ProductBoxWidget extends StatelessWidget {
                         style: LightAppTextStyle.title.copyWith(),
                       ),
                       Text(
-                        price.seprateWithComma,
+                        widget.price.seprateWithComma,
                         style: LightAppTextStyle.title.copyWith(),
                       ),
                     ],
                   ),
                   Visibility(
-                    visible: discount > 0 ? true : false,
+                    visible: widget.discount > 0 ? true : false,
                     child: Row(
                       children: [
                         Text(
@@ -82,7 +104,7 @@ class ProductBoxWidget extends StatelessWidget {
                               color: AppColors.hint),
                         ),
                         Text(
-                          "${discount.seprateWithComma} ",
+                          "${widget.discount.seprateWithComma} ",
                           style: LightAppTextStyle.title.copyWith(
                               decoration: TextDecoration.lineThrough,
                               color: AppColors.hint),
@@ -93,14 +115,14 @@ class ProductBoxWidget extends StatelessWidget {
                 ],
               ),
               Visibility(
-                visible: discount > 0 ? true : false,
+                visible: widget.discount > 0 ? true : false,
                 child: Container(
                   padding: const EdgeInsets.all(AppDimens.small * .5),
                   decoration: BoxDecoration(
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(AppDimens.small)),
                   child: Text(
-                    "$discountOff %",
+                    "${widget.oldPrice} %",
                     style: LightAppTextStyle.button,
                   ),
                 ),
@@ -109,7 +131,7 @@ class ProductBoxWidget extends StatelessWidget {
           ),
           AppDimens.medium.height,
           Visibility(
-            visible: discount > 0 ? true : false,
+            visible: _duration.inSeconds > 0 ? true : false,
             child: Container(
               height: 2.5,
               width: double.infinity,
@@ -118,9 +140,9 @@ class ProductBoxWidget extends StatelessWidget {
           ),
           AppDimens.small.height,
           Visibility(
-            visible: discount > 0 ? true : false,
+            visible: _duration.inSeconds > 0 ? true : false,
             child: Text(
-              time,
+              widget.specialExpiration,
               style: LightAppTextStyle.title
                   .copyWith(fontSize: 25, color: AppColors.primaryColor),
             ),

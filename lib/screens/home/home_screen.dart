@@ -9,7 +9,7 @@ import 'package:shopnew/screens/home/bloc/home_bloc.dart';
 
 import '../../widgets/app_slider.dart';
 import '../../widgets/cat_widget.dart';
-import '../../widgets/product_box.dart';
+import '../../widgets/product_item.dart';
 import '../../widgets/searchbar_widget.dart';
 import '../../widgets/vertical_text.dart';
 
@@ -31,7 +31,10 @@ class HomeScreen extends StatelessWidget {
             builder: (context, state) {
               if (state is HomeLoading) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 400),
+                    child: CircularProgressIndicator(),
+                  ),
                 );
               } else if (state is HomeLoaded) {
                 return Column(
@@ -70,77 +73,7 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       reverse: true,
                       child: SizedBox(
-                        height: size.height * .38,
-                        child: Row(
-                          children: [
-                            AppDimens.large.height,
-                            ListView.builder(
-                              physics: const ClampingScrollPhysics(),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 8,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  const ProductBoxWidget(
-                                productName: "ساعت مچی مردانه و زنانه",
-                                price: 100,
-                                discount: 20,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.all(AppDimens.large),
-                              child: VerticalText(
-                                title: AppStrings.topSells,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    AppDimens.large.height,
-                    AppSlider(
-                      imgList: state.home.sliders,
-                    ),
-                    AppDimens.medium.height,
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      reverse: true,
-                      child: SizedBox(
-                        height: size.height * .38,
-                        child: Row(
-                          children: [
-                            AppDimens.large.height,
-                            ListView.builder(
-                              physics: const ClampingScrollPhysics(),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 8,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  const ProductBoxWidget(
-                                productName: "ساعت مچی مردانه و زنانه",
-                                price: 100,
-                                discount: 20,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.all(AppDimens.large),
-                              child: VerticalText(
-                                title: AppStrings.newestProduct,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    AppDimens.large.height,
-                    AppSlider(
-                      imgList: state.home.sliders,
-                    ),
-                    AppDimens.medium.height,
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      reverse: true,
-                      child: SizedBox(
-                        height: size.height * .43,
+                        height: size.height * .50,
                         child: Row(
                           children: [
                             AppDimens.large.height,
@@ -150,18 +83,23 @@ class HomeScreen extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               itemCount: state.home.amazingProduct.length,
                               itemBuilder: (BuildContext context, int index) =>
-                                  ProductBoxWidget(
+                                  ProductItem(
+                                image: state.home.amazingProduct[index].image,
                                 productName:
                                     state.home.amazingProduct[index].title,
                                 price: state.home.amazingProduct[index].price,
                                 discount:
                                     state.home.amazingProduct[index].discount,
+                                specialExpiration: state.home
+                                    .amazingProduct[index].specialExpiration,
+                                oldPrice: state
+                                    .home.amazingProduct[index].discountPrice,
                               ),
                             ),
                             const Padding(
                               padding: EdgeInsets.all(AppDimens.large),
                               child: VerticalText(
-                                title: AppStrings.amazing,
+                                title: AppStrings.topSells,
                               ),
                             ),
                           ],

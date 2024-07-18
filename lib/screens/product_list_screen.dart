@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/res/dimens.dart';
-import 'package:shopnew/widgets/product_box.dart';
+import 'package:shopnew/widgets/product_item.dart';
 
 import '../component/text_style.dart';
 import '../gen/assets.gen.dart';
@@ -65,7 +65,7 @@ class ProductListGridView extends StatelessWidget {
               mainAxisSpacing: 2),
           itemCount: 20,
           itemBuilder: (context, i) {
-            return const ProductBoxWidget(
+            return const ProductItem(
                 productName: "ساعت مچی مردانه", price: 100000);
           }),
     );
