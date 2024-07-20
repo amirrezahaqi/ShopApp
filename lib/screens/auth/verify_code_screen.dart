@@ -7,6 +7,7 @@ import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
 import 'package:shopnew/screens/auth/cubit/auth_cubit.dart';
+import 'package:shopnew/utils/format_time.dart';
 
 import '../../component/text_style.dart';
 import '../../routs/names.dart';
@@ -50,15 +51,6 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
         }
       });
     });
-  }
-
-  String formatTime(int sec) {
-    int min = sec ~/ 60;
-    int seconds = sec % 60;
-
-    String minStr = min.toString().padLeft(2, "0");
-    String secondsStr = seconds.toString().padLeft(2, "0");
-    return "$minStr:$secondsStr";
   }
 
   @override

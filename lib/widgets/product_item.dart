@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shopnew/component/extension.dart';
+import 'package:shopnew/utils/format_time.dart';
 
 import '../component/text_style.dart';
 import '../res/colors.dart';
@@ -29,6 +32,8 @@ class ProductItem extends StatefulWidget {
 
 class _ProductItemState extends State<ProductItem> {
   Duration _duration = const Duration(seconds: 0);
+  late Timer _timer;
+  late int insecond;
 
   @override
   void initState() {
@@ -38,10 +43,8 @@ class _ProductItemState extends State<ProductItem> {
     DateTime now = DateTime.now();
     DateTime expiration = DateTime.parse(widget.specialExpiration);
     _duration = now.difference(expiration).abs();
-    int hours = _duration.inHours;
-    int minuts = _duration.inMinutes.remainder(60);
-    int seconds = _duration.inSeconds.remainder(60);
-    print("$hours:$minuts:$seconds");
+    insecond = _duration.inSeconds;
+    startTime();
   }
 
   @override
@@ -142,7 +145,7 @@ class _ProductItemState extends State<ProductItem> {
           Visibility(
             visible: _duration.inSeconds > 0 ? true : false,
             child: Text(
-              widget.specialExpiration,
+              formatTime(insecond),
               style: LightAppTextStyle.title
                   .copyWith(fontSize: 25, color: AppColors.primaryColor),
             ),
@@ -150,5 +153,18 @@ class _ProductItemState extends State<ProductItem> {
         ],
       ),
     );
+  }
+
+  void startTime() {
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(oneSec, (timer) {
+      setState(() {
+        if (insecond == 0) {
+          debugPrint("product ontap limited");
+        } else {
+          insecond--;
+        }
+      });
+    });
   }
 }
