@@ -6,6 +6,7 @@ import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/res/strings.dart';
 import 'package:shopnew/screens/home/bloc/home_bloc.dart';
+import 'package:shopnew/screens/product_list/product_list_screen.dart';
 
 import '../../widgets/app_slider.dart';
 import '../../widgets/cat_widget.dart';
@@ -58,8 +59,14 @@ class HomeScreen extends StatelessWidget {
                               child: CatWidget(
                                   iconPath: state.home.categories[i].image,
                                   ontap: () {
-                                    // ignore: avoid_print
-                                    print("id:${state.home.categories[i].id}");
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProductListScreen(
+                                            param: state.home.categories[i].id,
+                                          ),
+                                        ));
                                   },
                                   colors: i.isEven
                                       ? AppColors.catDesktopColors

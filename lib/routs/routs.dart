@@ -5,7 +5,7 @@ import 'package:shopnew/screens/auth/send_sms_screen.dart';
 
 import '../screens/auth/verify_code_screen.dart';
 import '../screens/mainscreen/main_screen.dart';
-import '../screens/product_list_screen.dart';
+import '../screens/product_list/product_list_screen.dart';
 import '../screens/product_single_screen.dart';
 
 Map<String, Widget Function(BuildContext)> routs = {
