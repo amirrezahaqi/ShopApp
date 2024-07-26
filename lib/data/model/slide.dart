@@ -17,9 +17,8 @@ class Slide {
   }
 }
 
-
-    //  {
-    //     "id": 1,
-    //     "title": "اسلاید 1",
-    //     "image": "https://watchstore.sasansafari.com/public/images/sliders/big/1652882081.jpg"
-    //   },
+//  {
+//     "id": 1,
+//     "title": "اسلاید 1",
+//     "image": "https://watchstore.sasansafari.com/public/images/sliders/big/1652882081.jpg"
+//   },
