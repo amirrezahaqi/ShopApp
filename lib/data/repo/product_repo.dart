@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:shopnew/data/model/product.dart';
+import 'package:shopnew/data/model/product_details.dart';
 import 'package:shopnew/data/src/product_data_src.dart';
 
 abstract class IProductRepository {
+  Future<ProductDetails> getProductDetails(int id);
   Future<List<Product>> getAllByCategory(int id);
   Future<List<Product>> getAllByBrand(int id);
   Future<List<Product>> getStored(String routeParam);
@@ -29,6 +31,10 @@ class ProductRepository implements IProductRepository {
   @override
   Future<List<Product>> searchProducts(String searchKey) =>
       _iProductDataSrc.searchProducts(searchKey);
+
+  @override
+  Future<ProductDetails> getProductDetails(int id) =>
+      _iProductDataSrc.getProductDetails(id);
 }
 
 final productRepository = ProductRepository(ProductRemoteDataSrc(Dio()));
