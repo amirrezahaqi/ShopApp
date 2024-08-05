@@ -88,9 +88,11 @@ class HomeScreen extends StatelessWidget {
                               physics: const ClampingScrollPhysics(),
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
-                              itemCount: state.home.amazingProduct.length,
+                              itemCount: 3,
+                              // itemCount: state.home.amazingProduct.length,
                               itemBuilder: (BuildContext context, int index) =>
                                   ProductItem(
+                                id: state.home.categories[index].id,
                                 image: state.home.amazingProduct[index].image,
                                 productName:
                                     state.home.amazingProduct[index].title,
