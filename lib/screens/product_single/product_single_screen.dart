@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
+import 'package:shopnew/data/model/product_details.dart';
 import 'package:shopnew/data/repo/product_repo.dart';
 import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/colors.dart';
@@ -46,12 +47,18 @@ class ProductSingleScreen extends StatelessWidget {
                         const CartBadge(count: 2),
                         Row(
                           children: [
-                            Text(
-                              state.productDetails.title ?? "خطایی رخ داده است",
-                              style: LightAppTextStyle.title,
+                            FittedBox(
+                              child: Text(
+                                state.productDetails.title ??
+                                    "خطایی رخ داده است",
+                                style: LightAppTextStyle.title,
+                                textAlign: TextAlign.right,
+                              ),
                             ),
-                            AppDimens.medium.width,
-                            SvgPicture.asset(Assets.svg.close),
+                            IconButton(
+                              onPressed: () => Navigator.pop(context),
+                              icon: SvgPicture.asset(Assets.svg.close),
+                            )
                           ],
                         )
                       ],
@@ -65,10 +72,10 @@ class ProductSingleScreen extends StatelessWidget {
                             Container(
                               width: double.infinity,
                               decoration: const BoxDecoration(),
-                              child: Image.asset(
-                                fit: BoxFit.cover,
-                                Assets.png.unnamed.path,
-                              ),
+                              child: Image.network(
+                                  scale: 1,
+                                  fit: BoxFit.cover,
+                                  state.productDetails.image!),
                             ),
                             AppDimens.medium.height,
                             Container(
@@ -82,17 +89,18 @@ class ProductSingleScreen extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    const Text(
-                                      "ساعت مچی مردانه",
+                                    Text(
+                                      state.productDetails.brand ?? "",
                                       style: LightAppTextStyle.title,
                                     ),
-                                    const Text(
-                                      "توضیحات محصول مورد نظر",
+                                    Text(
+                                      state.productDetails.title ?? "",
                                       style: LightAppTextStyle.hint,
                                     ),
                                     const Divider(),
                                     AppDimens.medium.height,
-                                    const ProductTabView(),
+                                    ProductTabView(
+                                        productDetails: state.productDetails),
                                     AppDimens.large.height,
                                   ],
                                 ),
@@ -128,7 +136,10 @@ class ProductSingleScreen extends StatelessWidget {
                                                   .copyWith(),
                                             ),
                                             Text(
-                                              100000.seprateWithComma,
+                                              state
+                                                  .productDetails
+                                                  .discountPrice!
+                                                  .seprateWithComma,
                                               style: LightAppTextStyle.title
                                                   .copyWith(),
                                             ),
@@ -145,7 +156,8 @@ class ProductSingleScreen extends StatelessWidget {
                                                       color: AppColors.hint),
                                             ),
                                             Text(
-                                              120000.seprateWithComma,
+                                              state.productDetails.price!
+                                                  .seprateWithComma,
                                               style: LightAppTextStyle.title
                                                   .copyWith(
                                                       decoration: TextDecoration
@@ -160,7 +172,7 @@ class ProductSingleScreen extends StatelessWidget {
                                       padding: const EdgeInsets.all(
                                           AppDimens.small * .5),
                                       decoration: BoxDecoration(
-                                          color: Colors.red,
+                                          color: AppColors.red,
                                           borderRadius: BorderRadius.circular(
                                               AppDimens.small)),
                                       child: const Text(
@@ -197,7 +209,12 @@ class ProductSingleScreen extends StatelessWidget {
 }
 
 class ProductTabView extends StatefulWidget {
-  const ProductTabView({super.key});
+  final ProductDetails productDetails;
+
+  const ProductTabView({
+    super.key,
+    required this.productDetails,
+  });
 
   @override
   State<ProductTabView> createState() => _ProductTabViewState();
@@ -236,7 +253,15 @@ class _ProductTabViewState extends State<ProductTabView> {
         ),
         IndexedStack(
           index: selectedIndex,
-          children: const [Review(), Comments(), Fetures()],
+          children: [
+            const Review(),
+            CommentsList(
+              comments: widget.productDetails.comments!,
+            ),
+            PropertyList(
+              properties: widget.productDetails.properties!,
+            )
+          ],
         )
       ],
     );
@@ -255,22 +280,60 @@ class Review extends StatelessWidget {
   }
 }
 
-class Comments extends StatelessWidget {
-  const Comments({super.key});
+class PropertyList extends StatelessWidget {
+  final List<Properties> properties;
+  const PropertyList({super.key, required this.properties});
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-        """نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات نظرات """);
+    return Expanded(
+      child: ListView.builder(
+        physics: const ClampingScrollPhysics(),
+        itemCount: properties.length,
+        shrinkWrap: true,
+        itemBuilder: (context, index) => Container(
+          decoration: BoxDecoration(
+              color: AppColors.propertiesItem,
+              borderRadius: BorderRadius.circular(10)),
+          width: double.infinity,
+          padding: const EdgeInsets.all(AppDimens.medium),
+          margin: const EdgeInsets.all(AppDimens.medium),
+          child: Text(
+            "${properties[index].property!} : ${properties[index].value!}",
+            textAlign: TextAlign.right,
+            style: LightAppTextStyle.hint,
+          ),
+        ),
+      ),
+    );
   }
 }
 
-class Fetures extends StatelessWidget {
-  const Fetures({super.key});
+class CommentsList extends StatelessWidget {
+  final List<Comments> comments;
+  const CommentsList({super.key, required this.comments});
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-        """مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات مشخصات """);
+    return Expanded(
+      child: ListView.builder(
+        physics: const ClampingScrollPhysics(),
+        itemCount: comments.length,
+        shrinkWrap: true,
+        itemBuilder: (context, index) => Container(
+          decoration: BoxDecoration(
+              color: AppColors.propertiesItem,
+              borderRadius: BorderRadius.circular(10)),
+          width: double.infinity,
+          padding: const EdgeInsets.all(AppDimens.medium),
+          margin: const EdgeInsets.all(AppDimens.medium),
+          child: Text(
+            "${comments[index].body!} : ${comments[index].user}",
+            textAlign: TextAlign.right,
+            style: LightAppTextStyle.hint,
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -12,6 +12,7 @@ class AppColors {
   static const Color oldPrice = Color.fromARGB(255, 191, 191, 191);
   static const Color shadow = Color.fromARGB(90, 0, 0, 0);
   static const Color hint = Colors.grey;
+  static const Color propertiesItem = Color.fromARGB(255, 245, 245, 245);
   static const Color appbar = Colors.white;
   static const Color searchBar = Colors.white;
   static const Color scaffoldBackgroundColor =
