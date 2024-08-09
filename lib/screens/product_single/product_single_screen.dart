@@ -286,23 +286,21 @@ class PropertyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        physics: const ClampingScrollPhysics(),
-        itemCount: properties.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) => Container(
-          decoration: BoxDecoration(
-              color: AppColors.propertiesItem,
-              borderRadius: BorderRadius.circular(10)),
-          width: double.infinity,
-          padding: const EdgeInsets.all(AppDimens.medium),
-          margin: const EdgeInsets.all(AppDimens.medium),
-          child: Text(
-            "${properties[index].property!} : ${properties[index].value!}",
-            textAlign: TextAlign.right,
-            style: LightAppTextStyle.hint,
-          ),
+    return ListView.builder(
+      physics: const ClampingScrollPhysics(),
+      itemCount: properties.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) => Container(
+        decoration: BoxDecoration(
+            color: AppColors.propertiesItem,
+            borderRadius: BorderRadius.circular(10)),
+        width: double.infinity,
+        padding: const EdgeInsets.all(AppDimens.medium),
+        margin: const EdgeInsets.all(AppDimens.medium),
+        child: Text(
+          "${properties[index].property!} : ${properties[index].value!}",
+          textAlign: TextAlign.right,
+          style: LightAppTextStyle.hint,
         ),
       ),
     );
@@ -315,23 +313,21 @@ class CommentsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        physics: const ClampingScrollPhysics(),
-        itemCount: comments.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) => Container(
-          decoration: BoxDecoration(
-              color: AppColors.propertiesItem,
-              borderRadius: BorderRadius.circular(10)),
-          width: double.infinity,
-          padding: const EdgeInsets.all(AppDimens.medium),
-          margin: const EdgeInsets.all(AppDimens.medium),
-          child: Text(
-            "${comments[index].body!} : ${comments[index].user}",
-            textAlign: TextAlign.right,
-            style: LightAppTextStyle.hint,
-          ),
+    return ListView.builder(
+      physics: const ClampingScrollPhysics(),
+      itemCount: comments.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) => Container(
+        decoration: BoxDecoration(
+            color: AppColors.propertiesItem,
+            borderRadius: BorderRadius.circular(10)),
+        width: double.infinity,
+        padding: const EdgeInsets.all(AppDimens.medium),
+        margin: const EdgeInsets.all(AppDimens.medium),
+        child: Text(
+          "${comments[index].body!} : ${comments[index].user}",
+          textAlign: TextAlign.right,
+          style: LightAppTextStyle.hint,
         ),
       ),
     );

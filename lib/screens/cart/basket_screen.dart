@@ -11,8 +11,8 @@ import '../../component/text_style.dart';
 import '../../res/dimens.dart';
 import '../../widgets/main_button.dart';
 
-class BasketScreen extends StatelessWidget {
-  const BasketScreen({super.key});
+class CartScreen extends StatelessWidget {
+  const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

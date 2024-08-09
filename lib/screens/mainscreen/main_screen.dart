@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shopnew/data/product_repository_test.dart';
 import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/colors.dart';
-import 'package:shopnew/screens/mainscreen/basket_screen.dart';
+import 'package:shopnew/screens/cart/basket_screen.dart';
 import 'package:shopnew/screens/mainscreen/profile_screen.dart';
 
 import '../../res/strings.dart';
@@ -89,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
                   Navigator(
                     key: _basketKey,
                     onGenerateRoute: (settings) => MaterialPageRoute(
-                      builder: (context) => const BasketScreen(),
+                      builder: (context) => const CartScreen(),
                     ),
                   ),
                   // Navigator(
