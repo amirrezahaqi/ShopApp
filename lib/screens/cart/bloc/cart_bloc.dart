@@ -25,6 +25,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
               .deletFromCart(productId: event.productId)
               .then((value) => emit(CartItemDeleteState()));
         } else if (event is AddToCartEvent) {
+          emit(CartLoadingState());
           await _cartRepository
               .addToCart(productId: event.productId)
               .then((value) => emit(CartItemAddedState()));

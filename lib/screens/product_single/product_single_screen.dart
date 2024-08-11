@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
 import 'package:shopnew/data/model/product_details.dart';
+import 'package:shopnew/data/repo/cart_repo.dart';
 import 'package:shopnew/data/repo/product_repo.dart';
 import 'package:shopnew/gen/assets.gen.dart';
 import 'package:shopnew/res/colors.dart';
+import 'package:shopnew/screens/cart/bloc/cart_bloc.dart';
 import 'package:shopnew/screens/product_single/bloc/product_single_bloc.dart';
 import 'package:shopnew/widgets/app_bar.dart';
 import 'package:shopnew/widgets/cart_bridge.dart';
@@ -22,12 +24,19 @@ class ProductSingleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return BlocProvider(
-      create: (context) {
-        final productBloc = ProductSingleBloc(productRepository);
-        productBloc.add(ProductSingleInit(id: id));
-        return productBloc;
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            final productBloc = ProductSingleBloc(productRepository);
+            productBloc.add(ProductSingleInit(id: id));
+            return productBloc;
+          },
+        ),
+        BlocProvider(
+          create: (context) => CartBloc(cartRepository),
+        ),
+      ],
       child: BlocConsumer<ProductSingleBloc, ProductSingleState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -182,12 +191,44 @@ class ProductSingleScreen extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  width: size.width * .5,
-                                  child: MainButton(
-                                    text: "افزودن به سبد خرید",
-                                    onPressed: () {},
-                                  ),
+                                BlocConsumer<CartBloc, CartState>(
+                                  listener: (cartContext, cartState) {
+                                    if (cartState is CartItemAddedState) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              duration: const Duration(
+                                                  milliseconds: 500),
+                                              backgroundColor:
+                                                  AppColors.success,
+                                              content: Text(
+                                                " محصول با موفقیت به سبد خرید اضافه شد ",
+                                                style: LightAppTextStyle.title
+                                                    .copyWith(
+                                                        color: AppColors
+                                                            .onSuccess),
+                                              )));
+                                    }
+                                  },
+                                  builder: (cartContext, cartState) {
+                                    if (cartState is CartLoadingState) {
+                                      return const Positioned(
+                                          bottom: 0,
+                                          left: AppDimens.large,
+                                          right: AppDimens.large,
+                                          child: LinearProgressIndicator());
+                                    }
+                                    return SizedBox(
+                                      width: size.width * .5,
+                                      child: MainButton(
+                                        text: "افزودن به سبد خرید",
+                                        onPressed: () {
+                                          BlocProvider.of<CartBloc>(context)
+                                              .add(AddToCartEvent(
+                                                  state.productDetails.id!));
+                                        },
+                                      ),
+                                    );
+                                  },
                                 ),
                               ],
                             ),
