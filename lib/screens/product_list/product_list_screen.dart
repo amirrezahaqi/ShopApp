@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopnew/component/extension.dart';
+import 'package:shopnew/data/repo/cart_repo.dart';
 import 'package:shopnew/data/repo/product_repo.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/screens/product_list/bloc/product_list_bloc.dart';
@@ -34,9 +35,11 @@ class ProductListScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CartBadge(
-                      count: 12,
-                    ),
+                    ValueListenableBuilder(
+                        valueListenable: cartRepository.cartCount,
+                        builder: (context, value, widget) {
+                          return CartBadge(count: value);
+                        }),
                     Row(
                       children: [
                         const Text("پروفروش ترین محصولات",
@@ -45,7 +48,11 @@ class ProductListScreen extends StatelessWidget {
                         SvgPicture.asset(Assets.svg.sort),
                       ],
                     ),
-                    SvgPicture.asset(Assets.svg.close)
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: SvgPicture.asset(Assets.svg.close))
                   ],
                 ),
               ),

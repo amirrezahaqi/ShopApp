@@ -29,6 +29,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           await _cartRepository
               .addToCart(productId: event.productId)
               .then((value) => emit(CartItemAddedState()));
+        } else if (event is CartItemCountEvent) {
+          await _cartRepository
+              .countCartItems()
+              .then((value) => emit(CartItemCountState()));
         }
       } catch (e) {
         emit(CartErrorState());

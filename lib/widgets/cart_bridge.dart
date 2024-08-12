@@ -22,7 +22,7 @@ class CartBadge extends StatelessWidget {
         Visibility(
           visible: count > 0 ? true : false,
           child: Positioned(
-            top: 5,
+            top: 1,
             right: 0,
             child: Container(
               decoration: BoxDecoration(
@@ -30,10 +30,10 @@ class CartBadge extends StatelessWidget {
                   color: Colors.red,
                   border: Border.all(width: 2, color: AppColors.appbar)),
               child: Padding(
-                padding: const EdgeInsets.all(2.5),
+                padding: const EdgeInsets.all(5),
                 child: Text(
                   count.toString(),
-                  style: LightAppTextStyle.button.copyWith(fontSize: 10),
+                  style: LightAppTextStyle.button.copyWith(fontSize: 15),
                 ),
               ),
             ),

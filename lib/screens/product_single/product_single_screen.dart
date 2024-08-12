@@ -34,11 +34,14 @@ class ProductSingleScreen extends StatelessWidget {
           },
         ),
         BlocProvider(
-          create: (context) => CartBloc(cartRepository),
+          create: (context) {
+            final cartBloc = CartBloc(cartRepository);
+            cartBloc.add(CartItemCountEvent());
+            return cartBloc;
+          },
         ),
       ],
-      child: BlocConsumer<ProductSingleBloc, ProductSingleState>(
-        listener: (context, state) {},
+      child: BlocBuilder<ProductSingleBloc, ProductSingleState>(
         builder: (context, state) {
           if (state is ProductSingleLoading) {
             return const Center(
@@ -53,7 +56,11 @@ class ProductSingleScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const CartBadge(count: 2),
+                        ValueListenableBuilder(
+                            valueListenable: cartRepository.cartCount,
+                            builder: (context, value, widget) {
+                              return CartBadge(count: value);
+                            }),
                         Row(
                           children: [
                             FittedBox(
