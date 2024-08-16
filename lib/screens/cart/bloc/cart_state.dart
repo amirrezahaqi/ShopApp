@@ -21,8 +21,20 @@ final class CartLoadedState extends CartState {
 
 final class CartErrorState extends CartState {}
 
-final class CartItemDeleteState extends CartState {}
+final class CartItemDeleteState extends CartState {
+  final List<CartModel> cartList;
 
-final class CartItemAddedState extends CartState {}
+  const CartItemDeleteState(this.cartList);
+}
 
-final class CartItemRemovedState extends CartState {}
+final class CartItemAddedState extends CartState {
+  final List<CartModel> cartList;
+
+  const CartItemAddedState(this.cartList);
+}
+
+final class CartItemRemovedState extends CartState {
+  final List<CartModel> cartList;
+
+  const CartItemRemovedState(this.cartList);
+}

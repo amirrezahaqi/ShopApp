@@ -5,9 +5,9 @@ import 'package:shopnew/utils/responce_validator.dart';
 
 abstract class ICartDataSrc {
   Future<List<CartModel>> getUserCart();
-  Future<int> addToCart({required int productId});
-  Future<void> removeFromCart({required int productId});
-  Future<int> deletFromCart({required int productId});
+  Future<List<CartModel>> addToCart({required int productId});
+  Future<List<CartModel>> removeFromCart({required int productId});
+  Future<List<CartModel>> deletFromCart({required int productId});
 
   countCartItems() {}
 }
@@ -18,25 +18,38 @@ class CartRemoteDataSrc implements ICartDataSrc {
   CartRemoteDataSrc(this.httpClient);
 
   @override
-  Future<int> addToCart({required int productId}) async =>
+  Future<List<CartModel>> addToCart({required int productId}) async =>
       await httpClient.post(Endpoints.addToCart,
           data: {productIdJsonKey: productId}).then((value) {
+        List<CartModel> cartList = <CartModel>[];
         HTTpResponceValidator.isValidStatusCode(value.statusCode ?? 0);
-        return (value.data['data']['user_cart'] as List).length;
+        for (var e in (value.data['data']['user_cart'] as List)) {
+          cartList.add(CartModel.fromJson(e));
+        }
+        return cartList;
       });
   @override
-  Future<int> deletFromCart({required int productId}) async =>
+  Future<List<CartModel>> deletFromCart({required int productId}) async =>
       await httpClient.post(Endpoints.deleteFromCart,
-          data: {productIdJsonKey: productId}).then((value) {
+          data: {productIdJsonKey: productId}).then((value) async {
+        List<CartModel> cartList = <CartModel>[];
         HTTpResponceValidator.isValidStatusCode(value.statusCode ?? 0);
-        return (value.data['data']['user_cart'] as List).length;
+        for (var e in (value.data['data']['user_cart'] as List)) {
+          cartList.add(CartModel.fromJson(e));
+        }
+        return cartList;
       });
   @override
-  Future<void> removeFromCart({required int productId}) async =>
-      await httpClient.post(Endpoints.removeFromCart, data: {
-        productIdJsonKey: productId
-      }).then((value) =>
-          HTTpResponceValidator.isValidStatusCode(value.statusCode ?? 0));
+  Future<List<CartModel>> removeFromCart({required int productId}) async =>
+      await httpClient.post(Endpoints.removeFromCart,
+          data: {productIdJsonKey: productId}).then((value) {
+        List<CartModel> cartList = <CartModel>[];
+        HTTpResponceValidator.isValidStatusCode(value.statusCode ?? 0);
+        for (var e in (value.data['data']['user_cart'] as List)) {
+          cartList.add(CartModel.fromJson(e));
+        }
+        return cartList;
+      });
 
   @override
   Future<List<CartModel>> getUserCart() async {
