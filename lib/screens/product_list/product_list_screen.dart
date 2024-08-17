@@ -77,15 +77,7 @@ class ProductListScreen extends StatelessWidget {
                                     mainAxisSpacing: 2),
                             itemCount: state.productList.length,
                             itemBuilder: (context, i) {
-                              return ProductItem(
-                                  id: state.productList[i].id,
-                                  image: state.productList[i].image,
-                                  productName: state.productList[i].title,
-                                  discount: state.productList[i].discount,
-                                  oldPrice: state.productList[i].discountPrice,
-                                  specialExpiration:
-                                      state.productList[i].specialExpiration,
-                                  price: state.productList[i].price);
+                              return ProductItem(product: state.productList[i]);
                             }),
                       );
                     } else if (state is ProductListError) {

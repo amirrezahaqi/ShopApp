@@ -235,13 +235,7 @@ class CartList extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(AppDimens.medium),
           child: ShopingCartItem(
-            productTitle: list[index].product,
-            count: list[index].count,
-            add: () => cartBloc.add(AddToCartEvent(list[index].productId)),
-            remove: () =>
-                cartBloc.add(RemoveFromCartEvent(list[index].productId)),
-            delete: () =>
-                cartBloc.add(DeleteFromCartEvent(list[index].productId)),
+            cartModel: list[index],
           ),
         );
       },

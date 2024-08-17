@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shopnew/component/extension.dart';
+import 'package:shopnew/data/model/product.dart';
 import 'package:shopnew/screens/product_single/product_single_screen.dart';
 import 'package:shopnew/utils/format_time.dart';
 
@@ -10,24 +11,9 @@ import '../res/colors.dart';
 import '../res/dimens.dart';
 
 class ProductItem extends StatefulWidget {
-  const ProductItem({
-    super.key,
-    required this.productName,
-    required this.price,
-    this.discount = 0,
-    this.oldPrice = 0,
-    this.specialExpiration = "2024-06-13 00:00:00",
-    this.image = "",
-    required this.id,
-  });
-  final id;
-  final String productName;
-  final int price;
-  final int discount;
-  final int oldPrice;
-  final String specialExpiration;
-  final String image;
+  ProductItem({super.key, required this.product});
 
+  Product product;
   @override
   State<ProductItem> createState() => _ProductItemState();
 }
@@ -42,9 +28,9 @@ class _ProductItemState extends State<ProductItem> {
     // TODO: implement initState
     super.initState();
     _timer = Timer(_duration, () {});
-    if (widget.specialExpiration != "") {
+    if (widget.product.specialExpiration != "") {
       DateTime now = DateTime.now();
-      DateTime expiration = DateTime.parse(widget.specialExpiration);
+      DateTime expiration = DateTime.parse(widget.product.specialExpiration);
       _duration = now.difference(expiration).abs();
       insecond = _duration.inSeconds;
       startTime();
@@ -60,7 +46,7 @@ class _ProductItemState extends State<ProductItem> {
             context,
             MaterialPageRoute(
               builder: (context) => ProductSingleScreen(
-                id: widget.id,
+                id: widget.product.id,
               ),
             ));
       },
@@ -84,12 +70,13 @@ class _ProductItemState extends State<ProductItem> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-                width: size.width * .4, child: Image.network(widget.image)),
+                width: size.width * .4,
+                child: Image.network(widget.product.image)),
             AppDimens.medium.height,
             Align(
               alignment: Alignment.centerRight,
               child: Text(
-                widget.productName,
+                widget.product.title,
                 style: LightAppTextStyle.title.copyWith(fontSize: 18),
               ),
             ),
@@ -106,13 +93,13 @@ class _ProductItemState extends State<ProductItem> {
                           style: LightAppTextStyle.title.copyWith(),
                         ),
                         Text(
-                          widget.price.seprateWithComma,
+                          widget.product.price.seprateWithComma,
                           style: LightAppTextStyle.title.copyWith(),
                         ),
                       ],
                     ),
                     Visibility(
-                      visible: widget.discount > 0 ? true : false,
+                      visible: widget.product.discount > 0 ? true : false,
                       child: Row(
                         children: [
                           Text(
@@ -122,7 +109,7 @@ class _ProductItemState extends State<ProductItem> {
                                 color: AppColors.hint),
                           ),
                           Text(
-                            "${widget.discount.seprateWithComma} ",
+                            "${widget.product.discount.seprateWithComma} ",
                             style: LightAppTextStyle.title.copyWith(
                                 decoration: TextDecoration.lineThrough,
                                 color: AppColors.hint),
@@ -133,14 +120,14 @@ class _ProductItemState extends State<ProductItem> {
                   ],
                 ),
                 Visibility(
-                  visible: widget.discount > 0 ? true : false,
+                  visible: widget.product.discount > 0 ? true : false,
                   child: Container(
                     padding: const EdgeInsets.all(AppDimens.small * .5),
                     decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(AppDimens.small)),
                     child: Text(
-                      "${widget.oldPrice} %",
+                      "${widget.product.discount} %",
                       style: LightAppTextStyle.button,
                     ),
                   ),

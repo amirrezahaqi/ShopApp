@@ -92,17 +92,7 @@ class HomeScreen extends StatelessWidget {
                               // itemCount: state.home.amazingProduct.length,
                               itemBuilder: (BuildContext context, int index) =>
                                   ProductItem(
-                                id: state.home.categories[index].id,
-                                image: state.home.amazingProduct[index].image,
-                                productName:
-                                    state.home.amazingProduct[index].title,
-                                price: state.home.amazingProduct[index].price,
-                                discount:
-                                    state.home.amazingProduct[index].discount,
-                                specialExpiration: state.home
-                                    .amazingProduct[index].specialExpiration,
-                                oldPrice: state
-                                    .home.amazingProduct[index].discountPrice,
+                                product: state.home.amazingProduct[index],
                               ),
                             ),
                             const Padding(
