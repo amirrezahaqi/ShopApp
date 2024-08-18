@@ -35,6 +35,7 @@ class _ShopingCartItemState extends State<ShopingCartItem> {
         child: Column(
           children: [
             Text(
+              textAlign: TextAlign.right,
               widget.cartModel.product,
               textDirection: TextDirection.rtl,
               style: LightAppTextStyle.title,

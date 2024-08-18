@@ -76,6 +76,7 @@ class _ProductItemState extends State<ProductItem> {
             Align(
               alignment: Alignment.centerRight,
               child: Text(
+                textAlign: TextAlign.right,
                 widget.product.title,
                 style: LightAppTextStyle.title.copyWith(fontSize: 18),
               ),

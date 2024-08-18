@@ -54,6 +54,7 @@ class ProductSingleScreen extends StatelessWidget {
                           children: [
                             FittedBox(
                               child: Text(
+                                textDirection: TextDirection.rtl,
                                 state.productDetails.title ??
                                     "خطایی رخ داده است",
                                 style: LightAppTextStyle.title,
@@ -97,10 +98,12 @@ class ProductSingleScreen extends StatelessWidget {
                                     Text(
                                       state.productDetails.brand ?? "",
                                       style: LightAppTextStyle.title,
+                                      textDirection: TextDirection.rtl,
                                     ),
                                     Text(
                                       state.productDetails.title ?? "",
                                       style: LightAppTextStyle.hint,
+                                      textDirection: TextDirection.rtl,
                                     ),
                                     const Divider(),
                                     AppDimens.medium.height,
