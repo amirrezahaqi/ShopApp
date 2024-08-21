@@ -13,8 +13,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartEvent>((event, emit) async {
       try {
         if (event is CartInitEvent) {
-          final cartList = await _cartRepository.getUserCart();
-          emit(CartLoadedState(cartList));
+          final userCart = await _cartRepository.getUserCart();
+          emit(CartLoadedState(userCart));
         } else if (event is RemoveFromCartEvent) {
           await _cartRepository
               .removeFromCart(productId: event.productId)

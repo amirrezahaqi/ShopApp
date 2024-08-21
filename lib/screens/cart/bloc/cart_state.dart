@@ -14,35 +14,35 @@ final class CartItemCountState extends CartState {}
 final class CartLoadingState extends CartState {}
 
 final class CartLoadedState extends CartState {
-  final List<CartModel> cartList;
+  final UserCart userCart;
 
-  const CartLoadedState(this.cartList);
+  const CartLoadedState(this.userCart);
   @override
-  List<Object> get props => cartList;
+  List<Object> get props => [userCart];
 }
 
 final class CartErrorState extends CartState {}
 
 final class CartItemDeleteState extends CartState {
-  final List<CartModel> cartList;
+  final UserCart userCart;
 
-  const CartItemDeleteState(this.cartList);
+  const CartItemDeleteState(this.userCart);
   @override
-  List<Object> get props => cartList;
+  List<Object> get props => [userCart];
 }
 
 final class CartItemAddedState extends CartState {
-  final List<CartModel> cartList;
+  final UserCart userCart;
 
-  const CartItemAddedState(this.cartList);
+  const CartItemAddedState(this.userCart);
   @override
-  List<Object> get props => cartList;
+  List<Object> get props => [userCart];
 }
 
 final class CartItemRemovedState extends CartState {
-  final List<CartModel> cartList;
+  final UserCart userCart;
 
-  const CartItemRemovedState(this.cartList);
+  const CartItemRemovedState(this.userCart);
   @override
-  List<Object> get props => cartList;
+  List<Object> get props => [userCart];
 }

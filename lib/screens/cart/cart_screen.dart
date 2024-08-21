@@ -99,13 +99,13 @@ class CartScreen extends StatelessWidget {
                     child: BlocBuilder<CartBloc, CartState>(
                       builder: (context, state) {
                         if (state is CartLoadedState) {
-                          return CartList(list: state.cartList);
+                          return CartList(list: state.userCart.cartList);
                         } else if (state is CartItemAddedState) {
-                          return CartList(list: state.cartList);
+                          return CartList(list: state.userCart.cartList);
                         } else if (state is CartItemDeleteState) {
-                          return CartList(list: state.cartList);
+                          return CartList(list: state.userCart.cartList);
                         } else if (state is CartItemRemovedState) {
-                          return CartList(list: state.cartList);
+                          return CartList(list: state.userCart.cartList);
                         } else if (state is CartErrorState) {
                           return const Text(
                             "خطایی رخ داده است",

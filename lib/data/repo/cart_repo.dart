@@ -4,10 +4,10 @@ import 'package:shopnew/data/model/cart.dart';
 import 'package:shopnew/data/src/cart_data_src.dart';
 
 abstract class ICartRepository {
-  Future<List<CartModel>> getUserCart();
-  Future<List<CartModel>> addToCart({required int productId});
-  Future<List<CartModel>> removeFromCart({required int productId});
-  Future<List<CartModel>> deletFromCart({required int productId});
+  Future<UserCart> getUserCart();
+  Future<UserCart> addToCart({required int productId});
+  Future<UserCart> removeFromCart({required int productId});
+  Future<UserCart> deletFromCart({required int productId});
   Future<int> countCartItems();
 }
 
@@ -17,24 +17,24 @@ class CartRepo implements ICartRepository {
   CartRepo(this._cartDataSrc);
 
   @override
-  Future<List<CartModel>> addToCart({required int productId}) =>
+  Future<UserCart> addToCart({required int productId}) =>
       _cartDataSrc.addToCart(productId: productId).then((value) {
-        cartCount.value = value.length;
+        cartCount.value = value.cartList.length;
         return value;
       });
 
   @override
-  Future<List<CartModel>> deletFromCart({required int productId}) =>
+  Future<UserCart> deletFromCart({required int productId}) =>
       _cartDataSrc.deletFromCart(productId: productId).then((value) {
-        cartCount.value = value.length;
+        cartCount.value = value.cartList.length;
         return value;
       });
 
   @override
-  Future<List<CartModel>> getUserCart() => _cartDataSrc.getUserCart();
+  Future<UserCart> getUserCart() => _cartDataSrc.getUserCart();
 
   @override
-  Future<List<CartModel>> removeFromCart({required int productId}) =>
+  Future<UserCart> removeFromCart({required int productId}) =>
       _cartDataSrc.removeFromCart(productId: productId);
 
   @override
