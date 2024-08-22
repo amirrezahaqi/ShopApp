@@ -9,7 +9,7 @@ import 'package:shopnew/res/strings.dart';
 import 'package:shopnew/screens/cart/bloc/cart_bloc.dart';
 import 'package:shopnew/widgets/app_bar.dart';
 import 'package:shopnew/widgets/cart_bridge.dart';
-import 'package:shopnew/widgets/main_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../component/text_style.dart';
 import '../../res/dimens.dart';
@@ -114,16 +114,7 @@ class CartScreen extends StatelessWidget {
                         } else if (state is CartLoadingState) {
                           return const LinearProgressIndicator();
                         } else {
-                          return ElevatedButton(
-                            onPressed: () {
-                              BlocProvider.of<CartBloc>(context)
-                                  .add(CartInitEvent());
-                            },
-                            child: const Text(
-                              "تلاش مجدد",
-                              style: LightAppTextStyle.title,
-                            ),
-                          );
+                          return const CircularProgressIndicator();
                         }
                       },
                     ),
@@ -133,82 +124,90 @@ class CartScreen extends StatelessWidget {
                 AppDimens.large2x.height,
               ],
             ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              left: 0,
-              child: Container(
-                color: AppColors.appbar,
-                height: 70,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "تومان",
-                                    style: LightAppTextStyle.title.copyWith(),
-                                  ),
-                                  Text(
-                                    100000.seprateWithComma,
-                                    style: LightAppTextStyle.title.copyWith(),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "تومان ",
-                                    style: LightAppTextStyle.title.copyWith(
-                                      decoration: TextDecoration.lineThrough,
-                                      color: AppColors.hint,
-                                    ),
-                                  ),
-                                  Text(
-                                    120000.seprateWithComma,
-                                    style: LightAppTextStyle.title.copyWith(
-                                      decoration: TextDecoration.lineThrough,
-                                      color: AppColors.hint,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(AppDimens.small * .5),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius:
-                                  BorderRadius.circular(AppDimens.small),
-                            ),
-                            child: const Text(
-                              "20%",
-                              style: LightAppTextStyle.button,
-                            ),
-                          ),
-                        ],
+            BlocConsumer<CartBloc, CartState>(
+              builder: (context, state) {
+                UserCart? userCart;
+                switch (state.runtimeType) {
+                  case CartLoadedState:
+                  case CartItemAddedState:
+                  case CartItemDeleteState:
+                  case CartItemRemovedState:
+                    userCart = (state as dynamic).userCart;
+                    break;
+                  case CartErrorState:
+                    return const Center(
+                      child: Text(
+                        "خطایی رخ داده است",
+                        style: LightAppTextStyle.title,
                       ),
-                      SizedBox(
-                        width: size.width * .3,
-                        child: MainButton(
-                          text: "ادامه خرید",
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+                    );
+                  case CartLoadingState:
+                    return const LinearProgressIndicator();
+                  default:
+                    return const SizedBox();
+                }
+                return Visibility(
+                  visible: (userCart?.cartTotalPrice ?? 0) > 0,
+                  child: Positioned(
+                      bottom: 0,
+                      right: 0,
+                      left: 0,
+                      child: Visibility(
+                          visible: (userCart?.cartTotalPrice ?? 0) > 0,
+                          child: GestureDetector(
+                              onTap: () => BlocProvider.of<CartBloc>(context)
+                                  .add(PayEvent()),
+                              child: Container(
+                                padding: const EdgeInsets.all(AppDimens.medium),
+                                margin: const EdgeInsets.all(AppDimens.medium),
+                                decoration: const BoxDecoration(
+                                    color: AppColors.surfaceColor,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(AppDimens.small))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SvgPicture.asset(Assets.svg.leftArrow),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "باتخفیف: ${userCart?.cartTotalPrice.seprateWithComma}تومان",
+                                          style:
+                                              LightAppTextStyle.title.copyWith(
+                                            color: AppColors.hint,
+                                          ),
+                                        ),
+                                        Visibility(
+                                          visible:
+                                              userCart?.totalWithoutDiscount !=
+                                                  userCart?.cartTotalPrice,
+                                          child: Text(
+                                            "قیمت: ${userCart?.totalWithoutDiscount.seprateWithComma}تومان",
+                                            style: LightAppTextStyle.title
+                                                .copyWith(
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                              color: Colors.red,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )))),
+                );
+              },
+              listener: (context, state) async {
+                if (state is RecivedPaymentState) {
+                  final Uri url = Uri.parse(state.url);
+                  if (!await launchUrl(url)) {
+                    throw Exception("could not Lounch $url");
+                  }
+                }
+              },
+            )
           ],
         ),
       ),

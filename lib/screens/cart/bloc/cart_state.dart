@@ -46,3 +46,11 @@ final class CartItemRemovedState extends CartState {
   @override
   List<Object> get props => [userCart];
 }
+
+final class RecivedPaymentState extends CartState {
+  final String url;
+
+  const RecivedPaymentState({required this.url});
+  @override
+  List<Object> get props => [url];
+}

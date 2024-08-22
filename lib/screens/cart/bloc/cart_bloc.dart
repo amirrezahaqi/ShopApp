@@ -31,6 +31,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           await _cartRepository
               .countCartItems()
               .then((value) => emit(CartItemCountState()));
+        } else if (event is PayEvent) {
+          await _cartRepository.payCart().then(
+              (value) => emit(RecivedPaymentState(url: value.toString())));
         }
       } catch (e) {
         emit(CartErrorState());

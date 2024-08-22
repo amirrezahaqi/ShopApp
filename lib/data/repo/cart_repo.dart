@@ -9,6 +9,7 @@ abstract class ICartRepository {
   Future<UserCart> removeFromCart({required int productId});
   Future<UserCart> deletFromCart({required int productId});
   Future<int> countCartItems();
+  Future<int> payCart();
 }
 
 class CartRepo implements ICartRepository {
@@ -40,6 +41,9 @@ class CartRepo implements ICartRepository {
   @override
   Future<int> countCartItems() =>
       _cartDataSrc.countCartItems().then((value) => cartCount.value = value);
+
+  @override
+  Future<int> payCart() => _cartDataSrc.payCart();
 }
 
 final cartRepository = CartRepo(CartRemoteDataSrc(DioManager.dio));

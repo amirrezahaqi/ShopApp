@@ -11,6 +11,8 @@ final class CartInitEvent extends CartEvent {}
 
 final class CartItemCountEvent extends CartEvent {}
 
+final class PayEvent extends CartEvent {}
+
 final class AddToCartEvent extends CartEvent {
   final int productId;
 
