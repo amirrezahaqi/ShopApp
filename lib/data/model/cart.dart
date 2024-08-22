@@ -4,7 +4,7 @@ class CartModel {
   String product;
   int count;
   int price;
-  int discountprice;
+  int discountPrice;
   int discount;
   String image;
   bool countLoading = false;
@@ -17,21 +17,22 @@ class CartModel {
     this.deleteLoading = false,
     required this.count,
     required this.price,
-    required this.discountprice,
+    required this.discountPrice,
     required this.discount,
     required this.image,
   });
 
   factory CartModel.fromJson(Map<String, dynamic> json) {
     return CartModel(
-        id: json['id'],
-        productId: json['product_id'],
-        product: json['product'],
-        count: json['count'],
-        price: json['price'],
-        discountprice: json['discount_price'],
-        discount: json['discount'],
-        image: json['image']);
+      id: json['id'],
+      productId: json['product_id'],
+      product: json['product'],
+      count: json['count'],
+      price: json['price'],
+      discount: json['discount'],
+      discountPrice: json['discount_price'],
+      image: json['image'],
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -40,7 +41,7 @@ class CartModel {
     data['product_id'] = productId;
     data['product'] = product;
     data['price'] = price;
-    data['discount_price'] = discountprice;
+    data['discount_price'] = discountPrice;
     data['discount'] = discount;
     data['image'] = image;
     return data;
@@ -62,9 +63,8 @@ class UserCart {
     List<CartModel> cartList =
         userCArtJson.map((e) => CartModel.fromJson(e)).toList();
     return UserCart(
-      cartList: cartList,
-      cartTotalPrice: json['cart_total_price'],
-      totalWithoutDiscount: json['total_without_dicount_price'],
-    );
+        cartList: cartList,
+        cartTotalPrice: json['cart_total_price'],
+        totalWithoutDiscount: json['total_without_discount_price']);
   }
 }
