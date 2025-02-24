@@ -11,9 +11,9 @@ ThemeData lightTheme() {
       scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
       inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: MaterialStateColor.resolveWith(
+          fillColor: WidgetStateColor.resolveWith(
             (states) {
-              if (states.contains(MaterialState.focused)) {
+              if (states.contains(WidgetState.focused)) {
                 return AppColors.focusedTextField;
               } else {
                 return AppColors.unFocusedTextField;

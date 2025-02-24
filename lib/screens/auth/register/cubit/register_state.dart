@@ -18,5 +18,5 @@ final class OkResponceState extends RegisterState {}
 final class LocationPickedState extends RegisterState {
   final GeoPoint? location;
 
-  LocationPickedState({required this.location});
+  const LocationPickedState({required this.location});
 }

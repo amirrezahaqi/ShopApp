@@ -8,6 +8,7 @@ sealed class ProductSingleEvent extends Equatable {
 }
 
 class ProductSingleInit extends ProductSingleEvent {
+  // ignore: prefer_typing_uninitialized_variables
   final id;
 
   const ProductSingleInit({required this.id});

@@ -230,6 +230,7 @@ class CartList extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: list.length,
       itemBuilder: (BuildContext context, int index) {
+        // ignore: unused_local_variable
         final cartBloc = BlocProvider.of<CartBloc>(context);
         return Padding(
           padding: const EdgeInsets.all(AppDimens.medium),

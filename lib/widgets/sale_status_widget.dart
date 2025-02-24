@@ -16,9 +16,13 @@ class SaleStatusWidget extends StatelessWidget {
     required this.colors,
     required this.label,
   });
+  // ignore: prefer_typing_uninitialized_variables
   final iconPath;
+  // ignore: prefer_typing_uninitialized_variables
   final ontap;
+  // ignore: prefer_typing_uninitialized_variables
   final colors;
+  // ignore: prefer_typing_uninitialized_variables
   final label;
 
   @override
@@ -42,6 +46,7 @@ class SaleStatusWidget extends StatelessWidget {
                   height: AppDimens.large * 2.5,
                   child: SvgPicture.asset(
                     iconPath,
+                    // ignore: deprecated_member_use
                     color: AppColors.scaffoldBackgroundColor,
                   ),
                 ),

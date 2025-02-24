@@ -17,6 +17,7 @@ import '../../component/text_style.dart';
 import '../../res/dimens.dart';
 
 class ProductSingleScreen extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final id;
   const ProductSingleScreen({super.key, this.id});
 

@@ -8,6 +8,7 @@ sealed class ProductListEvent extends Equatable {
 }
 
 class ProductListInit extends ProductListEvent {
+  // ignore: prefer_typing_uninitialized_variables
   final param;
   const ProductListInit({required this.param});
   @override

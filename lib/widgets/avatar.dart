@@ -9,7 +9,9 @@ import '../gen/assets.gen.dart';
 class Avatar extends StatelessWidget {
   const Avatar({super.key, required this.ontap, required this.file});
 
+  // ignore: prefer_typing_uninitialized_variables
   final ontap;
+  // ignore: prefer_typing_uninitialized_variables
   final file;
 
   @override

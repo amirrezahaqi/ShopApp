@@ -7,6 +7,7 @@ import '../gen/assets.gen.dart';
 import '../res/colors.dart';
 import '../res/dimens.dart';
 
+// ignore: must_be_immutable
 class SettingItem extends StatelessWidget {
   SettingItem({
     super.key,
@@ -20,6 +21,7 @@ class SettingItem extends StatelessWidget {
   final Size size;
   final String title;
   final String description;
+  // ignore: prefer_typing_uninitialized_variables
   final icon;
   void Function() onTap;
 

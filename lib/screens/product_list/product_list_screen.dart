@@ -15,6 +15,7 @@ import '../../widgets/cart_bridge.dart';
 import '../../widgets/cart_tags.dart';
 
 class ProductListScreen extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final param;
   const ProductListScreen({super.key, this.param});
 

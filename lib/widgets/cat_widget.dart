@@ -14,9 +14,13 @@ class CatWidget extends StatelessWidget {
     required this.colors,
     required this.label,
   });
+  // ignore: prefer_typing_uninitialized_variables
   final iconPath;
+  // ignore: prefer_typing_uninitialized_variables
   final ontap;
+  // ignore: prefer_typing_uninitialized_variables
   final colors;
+  // ignore: prefer_typing_uninitialized_variables
   final label;
 
   @override

@@ -14,31 +14,26 @@ abstract class IUserDataSrc {
 class RemoteDataSrc implements IUserDataSrc {
   @override
   Future<Address> getUserAddresses() {
-    // TODO: implement getUserAddresses
     throw UnimplementedError();
   }
 
   @override
   Future<UserInfo> getUserInfo() {
-    // TODO: implement getUserInfo
     throw UnimplementedError();
   }
 
   @override
   Future<Order> userCanselledOrder() {
-    // TODO: implement userCanselledOrder
     throw UnimplementedError();
   }
 
   @override
   Future<Order> userProccessingOrder() {
-    // TODO: implement userProccessingOrder
     throw UnimplementedError();
   }
 
   @override
   Future<Order> userRecievedOrder() {
-    // TODO: implement userRecievedOrder
     throw UnimplementedError();
   }
 }

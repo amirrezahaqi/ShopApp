@@ -127,6 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     imageHandler.getImage!.path),
                                 lat: lat,
                                 lng: lng);
+                            // ignore: use_build_context_synchronously
                             BlocProvider.of<RegisterCubit>(context)
                                 .register(user: user);
                           },

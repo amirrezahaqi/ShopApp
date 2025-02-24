@@ -7,6 +7,7 @@ import '../component/text_style.dart';
 
 class CartBadge extends StatelessWidget {
   const CartBadge({super.key, required this.count});
+  // ignore: prefer_typing_uninitialized_variables
   final count;
   @override
   Widget build(BuildContext context) {

@@ -10,6 +10,7 @@ import '../component/text_style.dart';
 import '../res/colors.dart';
 import '../res/dimens.dart';
 
+// ignore: must_be_immutable
 class ProductItem extends StatefulWidget {
   ProductItem({super.key, required this.product});
 
@@ -20,12 +21,12 @@ class ProductItem extends StatefulWidget {
 
 class _ProductItemState extends State<ProductItem> {
   Duration _duration = const Duration(seconds: 0);
+  // ignore: unused_field
   late Timer _timer;
   int insecond = 0;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _timer = Timer(_duration, () {});
     if (widget.product.specialExpiration != "") {

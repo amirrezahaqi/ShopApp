@@ -5,13 +5,14 @@ import 'package:shopnew/utils/shared_prefrences_manager.dart';
 class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
-      RequestOptions option, RequestInterceptorHandler handler) async {
+      RequestOptions options, RequestInterceptorHandler handler) async {
     String? token =
         SharedPrefrencesManager().getString(SharedPrefrencesKeys.token);
     if (token != null) {
-      option.headers['Authorization'] = 'Bearer $token';
+      options.headers['Authorization'] = 'Bearer $token';
     }
-    super.onRequest(option, handler);
+    super.onRequest(options, handler);
+    // ignore: avoid_print
     print(token);
   }
 }

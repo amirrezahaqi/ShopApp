@@ -9,6 +9,7 @@ import 'package:shopnew/res/colors.dart';
 import 'package:shopnew/res/dimens.dart';
 import 'package:shopnew/screens/cart/bloc/cart_bloc.dart';
 
+// ignore: must_be_immutable
 class ShopingCartItem extends StatefulWidget {
   ShopingCartItem({
     super.key,

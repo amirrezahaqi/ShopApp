@@ -5,6 +5,7 @@ class User {
   final String phone;
   final String address;
   final String postalCode;
+  // ignore: prefer_typing_uninitialized_variables
   final image;
   final double lat;
   final double lng;

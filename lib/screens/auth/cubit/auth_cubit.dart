@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
@@ -29,6 +30,7 @@ class AuthCubit extends Cubit<AuthState> {
         }
       });
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
       emit(ErrorState());
     }
@@ -47,6 +49,7 @@ class AuthCubit extends Cubit<AuthState> {
 
             var tokenKeys =
                 SharedPrefrencesManager().getString(SharedPrefrencesKeys.token);
+            // ignore: avoid_print
             print("token : $tokenKeys");
             if (value.data["data"]["is_registered"]) {
               emit(VerifiedIsRegisteredState());

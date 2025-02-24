@@ -7,11 +7,11 @@ class AppButtonStyle {
   AppButtonStyle._();
 
   static ButtonStyle mainButtonStyle = ButtonStyle(
-      textStyle: MaterialStateProperty.all(const TextStyle(
+      textStyle: WidgetStateProperty.all(const TextStyle(
           decorationColor: AppColors.scaffoldBackgroundColor,
           fontSize: AppDimens.large,
           color: AppColors.focusedTextField)),
-      backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
-      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+      backgroundColor: WidgetStateProperty.all(AppColors.primaryColor),
+      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppDimens.medium))));
 }
